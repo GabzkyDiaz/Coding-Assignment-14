@@ -1,4 +1,6 @@
 import { Meta, StoryFn } from '@storybook/react';
+import { within } from '@storybook/testing-library';
+import { expect } from '@storybook/test';
 import { Text, TextProps } from './Text';
 import styled from 'styled-components';
 
@@ -42,6 +44,13 @@ Small.args = {
   fontColor: 'black',
 };
 
+Small.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const text = canvas.getByText('Small Text');
+  await expect(text).toBeInTheDocument();
+  await expect(text).toHaveStyle('font-size: 12px');
+};
+
 export const Medium = Template.bind({});
 Medium.args = {
   text: 'Medium Text',
@@ -50,6 +59,13 @@ Medium.args = {
   bold: false,
   disabled: false,
   fontColor: 'black',
+};
+
+Medium.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const text = canvas.getByText('Medium Text');
+  await expect(text).toBeInTheDocument();
+  await expect(text).toHaveStyle('font-size: 16px');
 };
 
 export const Large = Template.bind({});
@@ -62,6 +78,13 @@ Large.args = {
   fontColor: 'black',
 };
 
+Large.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const text = canvas.getByText('Large Text');
+  await expect(text).toBeInTheDocument();
+  await expect(text).toHaveStyle('font-size: 24px');
+};
+
 export const Bold = Template.bind({});
 Bold.args = {
   text: 'Bold Text',
@@ -70,6 +93,13 @@ Bold.args = {
   bold: true,
   disabled: false,
   fontColor: 'black',
+};
+
+Bold.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const text = canvas.getByText('Bold Text');
+  await expect(text).toBeInTheDocument();
+  await expect(text).toHaveStyle('font-weight: 700');
 };
 
 export const Disabled = Template.bind({});
@@ -81,4 +111,11 @@ Disabled.args = {
   visible: true,
   fontColor: 'black',
   backgroundColor: 'gray',  
+};
+
+Disabled.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const text = canvas.getByText('Disabled Text');
+  await expect(text).toBeInTheDocument();
+  await expect(text).toHaveStyle('opacity: 0.5');
 };
