@@ -9,7 +9,7 @@ const preview: Preview = {
         date: /Date$/,
       },
     },
-    interactions: { disable: false }, // Ensure interactions are not disabled
+    interactions: { disable: false },
   },
 };
 

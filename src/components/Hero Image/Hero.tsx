@@ -6,29 +6,31 @@ export interface HeroProps {
   title: string;
   subtitle?: string;
   disabled?: boolean;
-  backgroundColor?: string; // Add backgroundColor prop
-  visible?: boolean; // Add visible prop
+  backgroundColor?: string;
+  visible?: boolean;
 }
 
 interface StyledHeroProps {
   imageUrl: string;
   disabled?: boolean;
   backgroundColor?: string;
-  visible?: boolean; // Add visible prop to StyledHeroProps
+  visible?: boolean;
 }
 
-const StyledHero = styled.div<StyledHeroProps>`
-  display: ${(props) => (props.visible ? 'flex' : 'none')}; // Handle visibility
+const StyledHero = styled.div.withConfig({
+  shouldForwardProp: (prop) => !['imageUrl', 'backgroundColor', 'visible', 'disabled'].includes(prop),
+})<StyledHeroProps>`
+  display: ${(props) => (props.visible ? 'flex' : 'none')};
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative; // Ensure positioning for background layering
+  position: relative;
   color: white;
   height: 400px;
   opacity: ${(props) => (props.disabled ? 0.5 : 1)};
   text-align: center;
-  background-color: ${(props) => props.backgroundColor || 'transparent'}; // Use backgroundColor prop
-  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'default')}; // Set cursor style based on disabled state
+  background-color: ${(props) => props.backgroundColor || 'transparent'};
+  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'default')};
 
   &::before {
     content: "";
@@ -40,11 +42,10 @@ const StyledHero = styled.div<StyledHeroProps>`
     background-image: url(${(props) => props.imageUrl});
     background-size: cover;
     background-position: center;
-    opacity: 0.5; // Adjust as necessary to see the background color
-    z-index: -1; // Ensure this layer is below the content
+    opacity: 0.5;
+    z-index: -1;
   }
 
-  // Responsive styles
   @media (max-width: 1024px) {
     height: 350px;
   }
@@ -85,7 +86,6 @@ const Subtitle = styled.h2`
 `;
 
 export const Hero: React.FC<HeroProps> = ({ imageUrl, title, subtitle, disabled, backgroundColor, visible = true }) => {
-  console.log('backgroundColor:', backgroundColor); // Add this line for debugging
   if (!visible) return null;
   return (
     <StyledHero imageUrl={imageUrl} disabled={disabled} backgroundColor={backgroundColor} visible={visible}>

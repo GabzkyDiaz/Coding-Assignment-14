@@ -1,4 +1,5 @@
 import { Meta, StoryFn } from '@storybook/react';
+import { userEvent, within } from '@storybook/testing-library';
 import { Hero, HeroProps } from './Hero';
 
 export default {
@@ -26,6 +27,12 @@ Primary.args = {
   backgroundColor: 'transparent',
 };
 
+Primary.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const heroTitle = await canvas.getByText('Hero Title');
+  await userEvent.hover(heroTitle); // Example interaction
+};
+
 export const Disabled = Template.bind({});
 Disabled.args = {
   imageUrl: 'https://via.placeholder.com/800x400',
@@ -34,4 +41,11 @@ Disabled.args = {
   disabled: true,
   backgroundColor: 'gray',
   visible: true,
+};
+
+Disabled.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const heroTitle = await canvas.getByText('Hero Title');
+  await userEvent.hover(heroTitle); // Example interaction
+  // Additional interactions for disabled state can be added here
 };
