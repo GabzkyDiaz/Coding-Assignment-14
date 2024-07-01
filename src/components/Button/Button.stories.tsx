@@ -50,7 +50,7 @@ Disabled.args = {
 
 Disabled.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
-  const button = await canvas.getByRole('button', { name: /ButtonButtonButton/i });
+  const button = await canvas.getByRole('button', { name: /Button/i });
   await userEvent.click(button); // Trying to click the disabled button should not trigger onClick
   await userEvent.hover(button); // Hovering should not change styles due to disabled state
 };
