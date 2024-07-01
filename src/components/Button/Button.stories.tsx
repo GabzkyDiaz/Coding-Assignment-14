@@ -12,6 +12,7 @@ export default {
     visible: { control: 'boolean' },
     label: { control: 'text' },
     disabled: { control: 'boolean' },
+    onClick: { action: 'clicked' },
   },
 } as Meta<typeof Button>;
 
@@ -35,21 +36,6 @@ Primary.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
   const button = await canvas.getByRole('button', { name: /Button/i });
   await userEvent.click(button);
-};
-
-export const Hover = Template.bind({});
-Hover.args = {
-  label: 'Button',
-  visible: true,
-  disabled: false,
-  hoverColor: '#0055ee',
-  onClick: fn(), // Explicitly set the onClick action
-};
-
-Hover.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement);
-  const button = await canvas.getByRole('button', { name: /Button/i });
-  await userEvent.hover(button);
 };
 
 export const Disabled = Template.bind({});

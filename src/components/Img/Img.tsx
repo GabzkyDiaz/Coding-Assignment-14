@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 export interface ImgProps {
@@ -18,7 +19,9 @@ interface StyledImgProps {
   visible?: boolean;
 }
 
-const Wrapper = styled.div<StyledImgProps>`
+const Wrapper = styled.div.withConfig({
+  shouldForwardProp: (prop) => !['backgroundColor', 'visible'].includes(prop),
+})<StyledImgProps>`
   display: ${(props) => (props.visible ? 'inline-block' : 'none')};
   width: ${(props) => props.width || '100%'};
   height: ${(props) => props.height || 'auto'};
@@ -43,7 +46,9 @@ const Wrapper = styled.div<StyledImgProps>`
   }
 `;
 
-const StyledImg = styled.img<StyledImgProps>`
+const StyledImg = styled.img.withConfig({
+  shouldForwardProp: (prop) => prop !== 'disabled',
+})<StyledImgProps>`
   width: 100%;
   height: 100%;
   display: block;
