@@ -9,6 +9,6 @@ describe('MobileMenu Component', () => {
     const button = screen.getByRole('button', { name: /Expand/i });
     expect(button).toBeInTheDocument();
     fireEvent.click(button);
-    expect(screen.getByRole('button', { name: /Collapsed/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Collapse/i })).toBeInTheDocument();
   });
 });
