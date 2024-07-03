@@ -63,7 +63,7 @@ Medium.args = {
 
 Medium.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
-  const text = canvas.getByText('sdasdsadd Text');
+  const text = canvas.getByText('Medium Text');
   await expect(text).toBeInTheDocument();
   await expect(text).toHaveStyle('font-size: 16px');
 };
