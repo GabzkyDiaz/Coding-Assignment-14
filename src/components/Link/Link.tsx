@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { LinkProps } from './Link.types';
 
-const Wrapper = styled.div<{ visible?: boolean; backgroundColor?: string; disabled?: boolean }>`
-  display: ${({ visible }) => (visible ? 'inline-block' : 'none')};
-  background-color: ${({ backgroundColor }) => backgroundColor || 'transparent'};
+const Wrapper = styled.div<{ $visible?: boolean; $backgroundColor?: string; disabled?: boolean }>`
+  display: ${({ $visible }) => ($visible ? 'inline-block' : 'none')};
+  background-color: ${({ $backgroundColor }) => $backgroundColor || 'transparent'};
   opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
 `;
@@ -47,7 +47,7 @@ const Link: React.FC<LinkProps> = ({ href, children, disabled, onClick, visible 
   };
 
   return (
-    <Wrapper visible={visible} backgroundColor={backgroundColor} disabled={disabled}>
+    <Wrapper $visible={visible} $backgroundColor={backgroundColor} disabled={disabled}>
       <StyledLink
         href={disabled ? undefined : href}
         target={disabled ? undefined : '_blank'}

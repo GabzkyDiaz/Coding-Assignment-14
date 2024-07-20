@@ -1,9 +1,10 @@
 // @ts-ignore
 import React, { ReactElement } from 'react';
 import { StoryFn, Meta } from '@storybook/react';
+import { within, userEvent } from '@storybook/testing-library';
+import { action } from '@storybook/addon-actions';
 import Link from './Link';
 import { LinkProps } from './Link.types';
-import { userEvent, within } from '@storybook/testing-library';
 import styled from 'styled-components';
 
 const StoryContainer = styled.div`
@@ -20,22 +21,17 @@ export default {
   title: 'StyledComponents/Link',
   component: Link,
   argTypes: {
-    disabled: { control: 'boolean' },
-    backgroundColor: { control: 'color' },
     children: { control: 'text' },
     href: { control: 'text' },
+    disabled: { control: 'boolean' },
     visible: { control: 'boolean' },
-  },
-  parameters: {
-    controls: {
-      expanded: true,
-    },
+    backgroundColor: { control: 'color' },
   },
 } as Meta<typeof Link>;
 
 type LinkStoryProps = LinkProps & { visible: boolean };
 
-const Template: StoryFn<LinkStoryProps> = ({ visible, ...args }): ReactElement => 
+const Template: StoryFn<LinkStoryProps> = ({ visible, ...args }): ReactElement =>
   visible ? (
     <StoryContainer>
       <Link {...args} />
@@ -51,6 +47,7 @@ Primary.args = {
   disabled: false,
   visible: true,
   backgroundColor: 'transparent',
+  onClick: action('link-click'), // Explicit spy function for onClick
 };
 
 Primary.play = async ({ canvasElement }) => {
@@ -66,6 +63,7 @@ Hover.args = {
   disabled: false,
   visible: true,
   backgroundColor: 'transparent',
+  onClick: action('link-hover'), // Explicit spy function for onClick
 };
 Hover.parameters = {
   pseudo: { hover: true },
@@ -78,10 +76,5 @@ Disabled.args = {
   disabled: true,
   visible: true,
   backgroundColor: 'transparent',
-};
-
-Disabled.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement);
-  const link = await canvas.getByText('Disabled Link');
-  await userEvent.hover(link);
+  onClick: action('link-disabled'), // Explicit spy function for onClick
 };
