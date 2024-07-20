@@ -19,6 +19,7 @@ export const Primary = Template.bind({});
 Primary.args = {
   children: 'Primary Link',
   href: '#',
+  onClick: (e) => e.preventDefault(), // Prevent default action
 };
 
 export const Disabled = Template.bind({});
@@ -26,6 +27,7 @@ Disabled.args = {
   children: 'Disabled Link',
   href: '#',
   disabled: true,
+  onClick: (e) => e.preventDefault(), // Prevent default action
 };
 
 Primary.play = async ({ canvasElement }) => {

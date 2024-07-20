@@ -13,10 +13,21 @@ const StyledLink = styled.a<{ disabled?: boolean }>`
   }
 `;
 
-const Link: React.FC<LinkProps> = ({ href, children, disabled }) => (
-  <StyledLink href={disabled ? undefined : href} disabled={disabled}>
-    {children}
-  </StyledLink>
-);
+const Link: React.FC<LinkProps> = ({ href, children, disabled, onClick }) => {
+  const handleClick = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    if (disabled) {
+      event.preventDefault();
+    }
+    if (onClick) {
+      onClick(event);
+    }
+  };
+
+  return (
+    <StyledLink href={disabled ? undefined : href} disabled={disabled} onClick={handleClick}>
+      {children}
+    </StyledLink>
+  );
+};
 
 export default Link;
