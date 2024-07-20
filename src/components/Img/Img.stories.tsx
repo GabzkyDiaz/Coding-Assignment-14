@@ -1,4 +1,5 @@
 import { Meta, StoryFn } from '@storybook/react';
+import { userEvent, within } from '@storybook/testing-library';
 import { Img, ImgProps } from './Img';
 import styled from 'styled-components';
 
@@ -26,13 +27,14 @@ export default {
   },
 } as Meta<typeof Img>;
 
-const Template: StoryFn<ImgProps & { visible: boolean }> = ({ visible, ...args }) => (
+const Template: StoryFn<ImgProps & { visible: boolean }> = ({ visible, ...args }) =>
   visible ? (
     <StoryContainer>
       <Img {...args} />
     </StoryContainer>
-  ) : <div style={{ display: 'none' }} />
-);
+  ) : (
+    <div style={{ display: 'none' }} />
+  );
 
 export const Primary = Template.bind({});
 Primary.args = {
@@ -43,6 +45,12 @@ Primary.args = {
   visible: true,
   disabled: false,
   backgroundColor: 'transparent',
+};
+
+Primary.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const img = await canvas.getByAltText('Placeholder Image');
+  await userEvent.hover(img);
 };
 
 export const Large = Template.bind({});
@@ -56,6 +64,12 @@ Large.args = {
   backgroundColor: 'transparent',
 };
 
+Large.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const img = await canvas.getByAltText('Large Placeholder Image');
+  await userEvent.hover(img);
+};
+
 export const Disabled = Template.bind({});
 Disabled.args = {
   src: 'https://via.placeholder.com/150',
@@ -65,4 +79,10 @@ Disabled.args = {
   height: '150px',
   visible: true,
   backgroundColor: 'gray',
+};
+
+Disabled.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const img = await canvas.getByAltText('Placeholder Image');
+  await userEvent.hover(img);
 };

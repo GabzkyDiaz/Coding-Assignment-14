@@ -1,4 +1,5 @@
 import { Meta, StoryFn } from '@storybook/react';
+import { userEvent, within } from '@storybook/testing-library';
 import { MobileMenu, MobileMenuProps } from './MobileMenu';
 
 export default {
@@ -30,6 +31,12 @@ Collapsed.args = {
   focus: false,
 };
 
+Collapsed.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const button = await canvas.getByRole('button', { name: /Expand/i });
+  await userEvent.click(button);
+};
+
 export const Hover = Template.bind({});
 Hover.args = {
   options: ['Home', 'Skills', 'Contact'],
@@ -39,6 +46,12 @@ Hover.args = {
   disabled: false,
   hover: true,
   focus: false,
+};
+
+Hover.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const menuItem = await canvas.getByText('Home');
+  await userEvent.hover(menuItem);
 };
 
 export const Focus = Template.bind({});
@@ -52,6 +65,12 @@ Focus.args = {
   focus: true,
 };
 
+Focus.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const menuItem = await canvas.getByText('Home');
+  await userEvent.click(menuItem);  // Focus is typically set by click
+};
+
 export const Expanded = Template.bind({});
 Expanded.args = {
   options: ['Home', 'Skills', 'Contact'],
@@ -63,6 +82,12 @@ Expanded.args = {
   focus: false,
 };
 
+Expanded.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const button = await canvas.getByRole('button', { name: /Collapse/i });
+  await userEvent.click(button);
+};
+
 export const Disabled = Template.bind({});
 Disabled.args = {
   options: ['Home', 'Skills', 'Contact'],
@@ -72,4 +97,10 @@ Disabled.args = {
   defaultExpanded: false,
   hover: false,
   focus: false,
+};
+
+Disabled.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const button = await canvas.getByRole('button', { name: /Expand/i });
+  await userEvent.click(button);  // Clicking disabled button should not change the state
 };

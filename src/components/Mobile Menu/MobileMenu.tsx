@@ -11,27 +11,27 @@ export interface MobileMenuProps {
   focus?: boolean;
 }
 
-const hoverStyles = css<{ disabled?: boolean }>`
+const hoverStyles = css<{ $disabled?: boolean }>`
   &:hover {
-    background-color: ${(props) => (props.disabled ? 'transparent' : '#575757')};
+    background-color: ${(props) => (props.$disabled ? 'transparent' : '#575757')};
   }
 `;
 
-const focusStyles = css<{ disabled?: boolean }>`
+const focusStyles = css<{ $disabled?: boolean }>`
   &:focus {
-    outline: ${(props) => (props.disabled ? 'none' : '2px solid white')};
+    outline: ${(props) => (props.$disabled ? 'none' : '2px solid white')};
   }
 `;
 
-const MenuContainer = styled.div<{ disabled: boolean; backgroundColor?: string; visible: boolean }>`
+const MenuContainer = styled.div<{ $isOpen: boolean; $disabled: boolean; $backgroundColor?: string; $visible: boolean }>`
   position: fixed;
   top: 0;
-  left: ${(props) => (props.disabled ? '-100%' : '0')};
+  left: ${(props) => (props.$isOpen ? '0' : '-100%')};
   width: 250px;
   height: 100%;
-  background-color: ${(props) => (props.disabled ? 'gray' : props.backgroundColor || '#333')};
+  background-color: ${(props) => (props.$disabled ? 'gray' : props.$backgroundColor || '#333')};
   transition: left 0.3s, background-color 0.3s;
-  display: ${(props) => (props.visible ? 'block' : 'none')};
+  display: ${(props) => (props.$visible ? 'block' : 'none')};
 
   @media (max-width: 768px) {
     width: 200px;
@@ -42,29 +42,29 @@ const MenuContainer = styled.div<{ disabled: boolean; backgroundColor?: string; 
   }
 `;
 
-const MenuItem = styled.div<{ disabled?: boolean; hover?: boolean; focus?: boolean }>`
+const MenuItem = styled.div<{ $disabled?: boolean; $hover?: boolean; $focus?: boolean }>`
   padding: 15px;
   color: white;
-  cursor: pointer;
+  cursor: ${(props) => (props.$disabled ? 'not-allowed' : 'pointer')};
 
-  ${(props) => props.hover && hoverStyles}
-  ${(props) => props.focus && focusStyles}
+  ${(props) => props.$hover && hoverStyles}
+  ${(props) => props.$focus && focusStyles}
 `;
 
-const MenuButton = styled.button<{ backgroundColor?: string; disabled: boolean; hover: boolean }>`
+const MenuButton = styled.button<{ $backgroundColor?: string; $disabled: boolean; $hover: boolean }>`
   position: fixed;
   top: 10px;
   left: 10px;
-  background-color: ${(props) => (props.disabled ? 'gray' : props.backgroundColor || '#6200ee')};
+  background-color: ${(props) => (props.$disabled ? 'gray' : props.$backgroundColor || '#6200ee')};
   color: white;
   padding: 10px;
   border: none;
   border-radius: 5px;
-  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
+  cursor: ${(props) => (props.$disabled ? 'not-allowed' : 'pointer')};
 
-  ${(props) => props.hover && css<{ disabled: boolean; backgroundColor?: string }>`
+  ${(props) => props.$hover && css<{ $disabled: boolean; $backgroundColor?: string }>`
     &:hover {
-      background-color: ${(props) => (props.disabled ? props.backgroundColor : '#575757')};
+      background-color: ${(props) => (props.$disabled ? props.$backgroundColor : '#575757')};
     }
   `}
 
@@ -98,16 +98,17 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
 
   return (
     <>
-      <MenuButton onClick={toggleMenu} disabled={disabled} backgroundColor={backgroundColor} hover={hover}>
+      <MenuButton onClick={toggleMenu} $disabled={disabled} $backgroundColor={backgroundColor} $hover={hover}>
         {isOpen ? 'Collapse' : 'Expand'}
       </MenuButton>
       <MenuContainer
-        disabled={!isOpen || disabled}
-        backgroundColor={backgroundColor}
-        visible={visible}
+        $isOpen={isOpen}
+        $disabled={disabled}
+        $backgroundColor={backgroundColor}
+        $visible={visible}
       >
         {options.map((option, index) => (
-          <MenuItem key={index} disabled={disabled} tabIndex={0} hover={hover} focus={focus}>
+          <MenuItem key={index} $disabled={disabled} tabIndex={0} $hover={hover} $focus={focus}>
             {option}
           </MenuItem>
         ))}
