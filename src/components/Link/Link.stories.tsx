@@ -6,7 +6,7 @@ import { LinkProps } from './Link.types';
 import { within, userEvent } from '@storybook/testing-library';
 
 export default {
-  title: 'Components/Link',
+  title: 'StyledComponents/Link',
   component: Link,
   argTypes: {
     disabled: { control: 'boolean' },

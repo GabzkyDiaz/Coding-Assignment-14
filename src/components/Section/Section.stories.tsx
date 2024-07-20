@@ -6,7 +6,7 @@ import { SectionProps } from './Section.types';
 import { within, userEvent } from '@storybook/testing-library';
 
 export default {
-  title: 'Components/Section',
+  title: 'StyledComponents/Section',
   component: Section,
   argTypes: {
     disabled: { control: 'boolean' },

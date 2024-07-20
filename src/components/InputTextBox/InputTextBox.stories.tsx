@@ -6,7 +6,7 @@ import { InputTextBoxProps } from './InputTextBox.types';
 import { within, userEvent } from '@storybook/testing-library';
 
 export default {
-  title: 'Components/InputTextBox',
+  title: 'StyledComponents/InputTextBox',
   component: InputTextBox,
   argTypes: {
     disabled: { control: 'boolean' },
