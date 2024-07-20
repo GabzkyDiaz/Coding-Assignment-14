@@ -6,7 +6,7 @@ export default {
   component: Button,
   argTypes: {
     backgroundColor: { control: 'color' },
-    hoverColor: { control: 'color' }, // Add control for hoverColor
+    hoverColor: { control: 'color' }, // Add Add control for hoverColor
     visible: { control: 'boolean' },
     label: { control: 'text' },
     disabled: { control: 'boolean' },
