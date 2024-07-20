@@ -3,4 +3,6 @@ export interface LinkProps {
   children: React.ReactNode;
   disabled?: boolean;
   onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+  visible?: boolean;
+  backgroundColor?: string;
 }
