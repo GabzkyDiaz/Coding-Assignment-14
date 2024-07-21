@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { InputTextBoxProps } from './InputTextBox.types';
 
-const StyledInput = styled.input<{ $disabled?: boolean; $backgroundColor?: string }>`
+const StyledInput = styled.input<{ $disabled?: boolean; $backgroundColor?: string; $focused?: boolean }>`
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid ${({ $focused }) => ($focused ? '#007bff' : '#ccc')};
   background-color: ${({ $backgroundColor }) => $backgroundColor || 'white'};
   opacity: ${({ $disabled }) => ($disabled ? 0.5 : 1)};
   cursor: ${({ $disabled }) => ($disabled ? 'not-allowed' : 'text')};
@@ -12,10 +12,6 @@ const StyledInput = styled.input<{ $disabled?: boolean; $backgroundColor?: strin
 
   &:hover {
     cursor: ${({ $disabled }) => ($disabled ? 'not-allowed' : 'text')};
-  }
-
-  &:focus {
-    border-color: #007bff;
   }
 
   @media (max-width: 1024px) {
@@ -43,6 +39,7 @@ const InputTextBox: React.FC<InputTextBoxProps> = ({ value, placeholder, disable
       placeholder={placeholder}
       $disabled={disabled}
       $backgroundColor={backgroundColor}
+      $focused={focused}
       disabled={disabled}
       onChange={onChange}
       onFocus={() => setFocused(true)}
