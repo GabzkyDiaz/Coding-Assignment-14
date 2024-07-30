@@ -1,0 +1,322 @@
+:root {
+    --black: #000000;
+    --white: #ffffff;
+    --dark-bg: #202020;
+    --secondary-dark: #252525;
+    --dark-2: #353535;
+    --accent: #67e0e1;
+    --gray-color: #7a7a7a;
+    --light-gray: #888;
+    --font-1: 'Inria Serif', serif;
+    --font-2: 'Poppins', sans-serif;
+    --font-3: 'Roboto', sans-serif;
+}
+
+/* HOME */
+
+.section-hero .row .col-2 {
+    flex: 0 0 auto;
+    width: 50%;
+}
+
+@media screen and (max-width: 768px) {
+    .section-hero img {
+        margin-top: 0;
+        height: 412px;
+        object-fit: contain;
+    }
+    .section-hero .row {
+        flex-direction: column;
+    }
+    .section-hero .col-2 {
+        width: 100% !important;
+    }
+    .section-hero .text-align-right {
+        text-align: center;
+        gap: 0;
+    }
+    .section-hero h1 {
+        font-size: 35px;
+    }
+    .section-hero .font-family-3 {
+        font-size: 23px;
+    }
+    .section-hero .font-3 {
+        font-size: 18px;
+        line-height: 23px;
+        width: 80%;
+        margin: 0 auto;
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .section-about .font-1 {
+        font-size: 34px;
+    }
+    .section-about .row-cols-1.row-cols-lg-3 {
+        flex-basis: 100%;
+        flex-direction: column;
+    }
+    .section-about .border-bottom-hover {
+        padding: 0;
+    }
+    .mask-image {
+        max-width: 200px;
+        margin: 0 auto;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.section-my-work h5 {
+    color: var(--accent);
+}
+
+.section-my-work .divider {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+@media screen and (max-width: 768px) {
+    .section-my-work .heading {
+        flex-direction: column-reverse;
+        padding: 10px;
+    }
+
+    .section-my-work .heading h5 {
+        text-align: center;
+    }
+
+    .section-my-work .heading p {
+        text-align: center;
+    }
+
+    .section-my-work .heading .font-1 {
+        text-align: center;
+        line-height: 47px;
+    }
+
+    .section-my-work .divider {
+        display: none;
+    }
+
+    .section-my-work .body .col {
+        padding: 20px;
+    }
+
+    .p-3 {
+        padding: 0;
+    }
+}
+
+.section-testimonial {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.testimonial {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .section-testimonial {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    .section-testimonial .content {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .section-testimonial .content .font-1,
+    .section-testimonial .content h4 {
+        font-size: 31px;
+    }
+    .section-testimonial .gap-3-testimonial {
+        flex-basis: 100%;
+        flex-direction: column;
+    }
+    .section-testimonial .border-bottom-hover {
+        padding: 0;
+    }
+}
+
+.footer input {
+    width: 500px;
+}
+
+.footer p {
+    max-width: 700px;
+    margin: 30px auto;
+}
+@media screen and (max-width: 768px) {
+    .footer .section {
+        padding: 20px 20px;
+    }
+    .footer .font-1 {
+       font-size: 30px;
+       margin-top: 15px !important;
+    }
+    .footer input {
+       width: 100%;
+       max-width: 250px;
+    }
+
+    .footer .btn {
+        border-left: 1px solid var(--accent);
+        width: 100%;
+        max-width: 250px;
+        margin-top: 10px;
+    }
+}
+
+/* CONTACT */
+.section-contact .contact__wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.section-contact .contact__wrapper .contact__left {
+    flex-basis: 50%;
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+}
+
+.section-contact .contact__wrapper .contact__right {
+    flex-basis: 50%;
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+}
+
+@media screen and (max-width: 768px) {
+    .section-contact .contact__wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .section-contact .contact__wrapper .contact__left {
+        flex-basis: 100%;
+        display: flex;
+        flex-direction: column;
+        gap:20px;
+    }
+    
+    .section-contact .contact__wrapper .contact__right {
+        flex-basis: 100%;
+        display: flex;
+        flex-direction: column;
+        gap:20px;
+    }
+    
+    .section-contact .contact__wrapper .row {
+        flex-basis: 100%;
+        display: flex;
+        flex-direction: column;
+        gap:20px;
+    }
+}
+
+/* SKILLS */
+.section-skills .skills__wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.section-skills .skills__wrapper {
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+}
+
+.container-skillbar {
+    width: 100%;
+    padding-top: 30px;
+    height: auto;
+    overflow: none;
+}
+
+.skillbar {
+    position: relative;
+    display: block;
+    margin-bottom: 15px;
+    width: 100%;
+    background: #efefef;
+    height: 30px;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -webkit-transition: 0.4s linear;
+    -moz-transition: 0.4s linear;
+    -ms-transition: 0.4s linear;
+    -o-transition: 0.4s linear;
+    transition: 0.4s linear;
+    -webkit-transition-property: width, background-color;
+    -moz-transition-property: width, background-color;
+    -ms-transition-property: width, background-color;
+    -o-transition-property: width, background-color;
+    transition-property: width, background-color;
+}
+
+.skillbar-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 110px;
+    font-weight: bold;
+    font-size: 13px;
+    color: #fff;
+    background: #6adcfa;
+    -webkit-border-top-left-radius: 3px;
+    -webkit-border-bottom-left-radius: 4px;
+    -moz-border-radius-topleft: 3px;
+    -moz-border-radius-bottomleft: 3px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.skillbar-title span {
+    display: block;
+    background: rgba(0, 0, 0, 0.15);
+    padding: 0 20px;
+    height: 30px;
+    line-height: 30px;
+    -webkit-border-top-left-radius: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    -moz-border-radius-topleft: 3px;
+    -moz-border-radius-bottomleft: 3px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.skillbar-bar {
+    height: 30px;
+    width: 0px;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+
+.skill-bar-percent {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    font-weight: bold;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    color: black;
+}
