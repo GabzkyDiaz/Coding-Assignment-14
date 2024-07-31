@@ -6,8 +6,10 @@ export interface ButtonProps {
   disabled?: boolean;
   backgroundColor?: string;
   hoverColor?: string;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   visible?: boolean;
+  className?: string;
+  type?: 'button' | 'submit' | 'reset';
 }
 
 const StyledButton = styled.button.withConfig({
@@ -15,16 +17,18 @@ const StyledButton = styled.button.withConfig({
     !['backgroundColor', 'hoverColor'].includes(prop),
 })<{ disabled?: boolean, backgroundColor?: string, hoverColor?: string }>`
   background-color: ${(props) => props.backgroundColor || '#6200ee'};
-  color: white;
+  color: ${(props) => props.color || 'white'};
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
   opacity: ${(props) => (props.disabled ? 0.5 : 1)};
   font-size: 1.2rem;
+  transition: color 0.3s ease, background-color 0.3s ease;
 
   &:hover {
-    background-color: ${(props) => !props.disabled && (props.hoverColor || '#3700b3')};
+    background-color: ${(props) => !props.disabled && (props.hoverColor || '#5fe0e0')};
+    color: white;
   }
 
   @media (max-width: 1024px) {
@@ -43,14 +47,16 @@ const StyledButton = styled.button.withConfig({
   }
 `;
 
-const Button: React.FC<ButtonProps> = ({ label, disabled, backgroundColor, hoverColor, onClick, visible = true }) => {
+const Button: React.FC<ButtonProps> = ({ label, disabled, backgroundColor, hoverColor, onClick, visible = true, className, type = 'button' }) => {
   if (!visible) return null;
   return (
     <StyledButton
+      type={type}
       disabled={disabled}
       backgroundColor={disabled ? 'gray' : backgroundColor}
       hoverColor={hoverColor}
       onClick={onClick}
+      className={className}
     >
       {label}
     </StyledButton>
