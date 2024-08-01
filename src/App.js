@@ -3,6 +3,7 @@ import $ from "jquery";
 import { Link, useHistory } from "react-router-dom";
 import Button from "./components/Button/Button.tsx";
 import Hero from "./components/Hero Image/Hero.tsx";
+import Img from "./components/Img/Img.tsx";
 
 const App = () => {
   const history = useHistory(); // Call useHistory inside the component
@@ -97,7 +98,7 @@ const App = () => {
             <div className="row w-100 m-0">
               <div className="col">
                 <div className="d-flex align-items-end">
-                  <img src="image/image-600x700-1.png" alt="" className="img-fluid banner-image" />
+                  <Img src="image/image-600x700-1.png" alt="" className="img-fluid banner-image" />
                 </div>
               </div>
               <div className="col col-2">
@@ -119,7 +120,7 @@ const App = () => {
             <div className="d-flex flex-column gap-3 text-white">
               <div className="row row-cols-1 row-cols-lg-2">
                 <div className="col col-lg-5">
-                  <img src="image/image-600x400-1.jpg" alt="" className="mask-image img-fluid mask-image-no-1" />
+                  <Img src="image/image-600x400-1.jpg" alt="" className="mask-image img-fluid mask-image-no-1" />
                 </div>
                 <div className="col col-lg-7">
                   <div className="d-flex flex-column gap-3">
@@ -187,7 +188,7 @@ const App = () => {
               </div>
               <div className="col col-lg-5">
                 <div className="m-0">
-                  <img src="image/image-600x400-2.jpg" alt="" className="mask-image img-fluid mask-image-no-2" />
+                  <Img src="image/image-600x400-2.jpg" alt="" className="mask-image img-fluid mask-image-no-2" />
                 </div>
               </div>
             </div>
@@ -195,7 +196,7 @@ const App = () => {
               <div className="col mb-3">
                 <div className="d-flex flex-column p-3">
                   <div className="mb-4">
-                    <img src="image/image-600x800-1.png" alt="" className="img-fluid hover-scale" />
+                    <Img src="image/image-600x800-1.png" alt="" className="img-fluid hover-scale" />
                   </div>
                   <div className="text-center">
                     <p>
@@ -208,7 +209,7 @@ const App = () => {
               <div className="col mb-3">
                 <div className="d-flex flex-column p-3">
                   <div className="mb-4">
-                    <img src="image/image-600x800-2.png" alt="" className="img-fluid hover-scale" />
+                    <Img src="image/image-600x800-2.png" alt="" className="img-fluid hover-scale" />
                   </div>
                   <div className="text-center">
                     <p>
@@ -260,7 +261,7 @@ const App = () => {
             <div className="d-flex flex-lg-row flex-column gap-3 mb-3 content">
               <div className="col col-lg-5">
                 <div className="m-0 d-flex flex-column gap-3 text-lg-end text-start">
-                  <img src="image/image-600x400-3.jpg" alt="" className="mask-image img-fluid mask-image-no-3" />
+                  <Img src="image/image-600x400-3.jpg" alt="" className="mask-image img-fluid mask-image-no-3" />
                   <label className="font-1 fw-bold white-color">Elevating Digital Realms with Expert Web Development.</label>
                   <p className="white-color">
                     Through years of dedicated craftsmanship, I have seamlessly blended creativity and functionality to shape immersive online experiences that

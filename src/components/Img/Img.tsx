@@ -9,6 +9,7 @@ export interface ImgProps {
   disabled?: boolean;
   backgroundColor?: string;
   visible?: boolean;
+  className?: string;
 }
 
 interface StyledImgProps {
@@ -55,11 +56,20 @@ const StyledImg = styled.img.withConfig({
   opacity: ${(props) => (props.disabled ? 0.5 : 1)};
 `;
 
-export const Img: React.FC<ImgProps> = ({ src, alt, width, height, disabled, backgroundColor, visible = true }) => {
+export const Img: React.FC<ImgProps> = ({ src, alt, width, height, disabled, backgroundColor, visible = true, className }) => {
   if (!visible) return null;
   return (
-    <Wrapper width={width} height={height} disabled={disabled} backgroundColor={backgroundColor} visible={visible}>
+    <Wrapper
+      width={width}
+      height={height}
+      disabled={disabled}
+      backgroundColor={backgroundColor}
+      visible={visible}
+      className={className}
+    >
       <StyledImg src={src} alt={alt} disabled={disabled} />
     </Wrapper>
   );
 };
+
+export default Img;
