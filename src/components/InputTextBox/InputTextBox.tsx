@@ -27,7 +27,7 @@ const StyledInput = styled.input<{ $disabled?: boolean; $backgroundColor?: strin
   }
 `;
 
-const InputTextBox: React.FC<InputTextBoxProps> = ({ value, placeholder, disabled, backgroundColor, visible = true, onChange }) => {
+const InputTextBox: React.FC<InputTextBoxProps> = ({ value, placeholder, disabled, backgroundColor, visible = true, onChange, className, required }) => {
   const [focused, setFocused] = useState(false);
 
   if (!visible) return null;
@@ -44,6 +44,8 @@ const InputTextBox: React.FC<InputTextBoxProps> = ({ value, placeholder, disable
       onChange={onChange}
       onFocus={() => setFocused(true)}
       onBlur={() => setFocused(false)}
+      className={className}
+      required={required} // Add this line
     />
   );
 };

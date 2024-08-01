@@ -4,6 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import Button from "./components/Button/Button.tsx";
 import Hero from "./components/Hero Image/Hero.tsx";
 import Img from "./components/Img/Img.tsx";
+import InputTextBox from "./components/InputTextBox/InputTextBox.tsx";
 
 const App = () => {
   const history = useHistory(); // Call useHistory inside the component
@@ -59,6 +60,7 @@ const App = () => {
   };
 
   const [isHovered, setIsHovered] = useState(false);
+  const [email, setEmail] = useState('');
 
   return (
     <div>
@@ -368,13 +370,11 @@ const App = () => {
                 <form id="newsletter-form" className="w-100 form needs-validation">
                   <input type="text" name="action" value="subscribe" hidden />
                   <div className="input-group mb-3">
-                    <input
-                      type="email"
-                      name="email"
-                      className="form-control py-3 px-4 form-white"
+                    <InputTextBox
+                      value={email}
                       placeholder="Email"
-                      aria-label="Recipient's username"
-                      aria-describedby="button-addon2"
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="form-control py-3 px-4 form-white"
                       required
                     />
                     <Button

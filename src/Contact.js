@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import $ from "jquery";
 import { Link, useHistory } from "react-router-dom";
 import Button from "./components/Button/Button.tsx";
+import InputTextBox from "./components/InputTextBox/InputTextBox.tsx";
 
 const Contact = () => {
-  const history = useHistory(); // Call useHistory inside the component add
+  const history = useHistory();
 
   useEffect(() => {
     // jQuery equivalent logic
@@ -33,9 +34,13 @@ const Contact = () => {
   const handleReset = (e) => {
     e.preventDefault();
     document.getElementById("contact-form").reset();
-    document.getElementById("nameError").textContent = "";
-    document.getElementById("emailError").textContent = "";
-    document.getElementById("phoneError").textContent = "";
+    setName('');
+    setEmail('');
+    setPhone('');
+    setMessage('');
+    setNameError('');
+    setEmailError('');
+    setPhoneError('');
   };
 
   const handleSendMessage = (e) => {
@@ -58,6 +63,44 @@ const Contact = () => {
   };
 
   const [isHovered, setIsHovered] = useState(false);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [message, setMessage] = useState('');
+  const [nameError, setNameError] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [phoneError, setPhoneError] = useState('');
+
+  function validateForm() {
+    let isValid = true;
+
+    if (!name.trim()) {
+      isValid = false;
+      setNameError("Name is required.");
+    } else {
+      setNameError("");
+    }
+
+    if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      isValid = false;
+      setEmailError("Valid email is required.");
+    } else {
+      setEmailError("");
+    }
+
+    if (!phone.trim() || !/^\d{10}$/.test(phone)) {
+      isValid = false;
+      setPhoneError("Valid phone number is required.");
+    } else {
+      setPhoneError("");
+    }
+
+    if (isValid) {
+      history.push("/");
+      window.scrollTo(0, 0);
+    }
+    return isValid;
+  }
 
   return (
     <div>
@@ -130,23 +173,41 @@ const Contact = () => {
                     <div className="row row-cols-2 mb-3 gap-2">
                       <div className="col">
                         <label id="nameLabel" htmlFor="name">Your Name:</label>
-                        <input type="text" className="form-control p-3" name="name" id="name" aria-labelledby="nameLabel" placeholder="Your Name" required />
-                        <div id="nameError" className="error-message"></div>
+                        <InputTextBox
+                          value={name}
+                          placeholder="Your Name"
+                          onChange={(e) => setName(e.target.value)}
+                          className="form-control p-3"
+                          required={true}
+                        />
+                        <div id="nameError" className="error-message">{nameError}</div>
                       </div>
                       <div className="col">
                         <label id="emailLabel" htmlFor="email">Your Email:</label>
-                        <input type="email" className="form-control p-3" name="email" id="email" aria-labelledby="emailLabel" placeholder="Your Email" required />
-                        <div id="emailError" className="error-message"></div>
+                        <InputTextBox
+                          value={email}
+                          placeholder="Your Email"
+                          onChange={(e) => setEmail(e.target.value)}
+                          className="form-control p-3"
+                          required={true}
+                        />
+                        <div id="emailError" className="error-message">{emailError}</div>
                       </div>
                     </div>
                     <div className="mb-3">
                       <label id="phoneLabel" htmlFor="phone">Your Phone:</label>
-                      <input type="text" className="form-control p-3" name="phone" id="phone" aria-labelledby="phoneLabel" placeholder="Your Phone" required />
-                      <div id="phoneError" className="error-message"></div>
+                      <InputTextBox
+                        value={phone}
+                        placeholder="Your Phone"
+                        onChange={(e) => setPhone(e.target.value)}
+                        className="form-control p-3"
+                        required={true}
+                      />
+                      <div id="phoneError" className="error-message">{phoneError}</div>
                     </div>
                     <div className="mb-3">
                       <label id="messageLabel" htmlFor="message">Your Message:</label>
-                      <textarea className="form-control text-white" id="message" name="message" rows="5" aria-labelledby="messageLabel" placeholder="Your Message"></textarea>
+                      <textarea className="form-control text-white" id="message" name="message" rows="5" aria-labelledby="messageLabel" placeholder="Your Message" value={message} onChange={(e) => setMessage(e.target.value)}></textarea>
                     </div>
                     <div className="mb-3 action-buttons"> 
                       <Button
@@ -187,14 +248,12 @@ const Contact = () => {
                 <form id="newsletter-form" className="w-100 form needs-validation">
                   <input type="text" name="action" value="subscribe" hidden />
                   <div className="input-group mb-3">
-                    <input
-                      type="email"
-                      name="email"
-                      className="form-control py-3 px-4 form-white"
+                    <InputTextBox
+                      value={email}
                       placeholder="Email"
-                      aria-label="Recipient's username"
-                      aria-describedby="button-addon2"
-                      required
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="form-control py-3 px-4 form-white"
+                      required={true}
                     />
                     <Button
                       type="submit"
@@ -229,40 +288,6 @@ const Contact = () => {
       </footer>
     </div>
   );
-
-  function validateForm() {
-    const name = document.getElementById("name");
-    const email = document.getElementById("email");
-    const phone = document.getElementById("phone");
-    let isValid = true;
-
-    if (!name.value.trim()) {
-      isValid = false;
-      document.getElementById("nameError").textContent = "Name is required.";
-    } else {
-      document.getElementById("nameError").textContent = "";
-    }
-
-    if (!email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
-      isValid = false;
-      document.getElementById("emailError").textContent = "Valid email is required.";
-    } else {
-      document.getElementById("emailError").textContent = "";
-    }
-
-    if (!phone.value.trim() || !/^\d{10}$/.test(phone.value)) {
-      isValid = false;
-      document.getElementById("phoneError").textContent = "Valid phone number is required.";
-    } else {
-      document.getElementById("phoneError").textContent = "";
-    }
-
-    if (isValid) {
-      history.push("/");
-      window.scrollTo(0, 0);
-    }
-    return isValid;
-  }
 };
 
 export default Contact;

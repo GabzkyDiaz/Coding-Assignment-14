@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import $ from "jquery";
 import { Link, useHistory } from "react-router-dom";
 import Button from "./components/Button/Button.tsx";
+import InputTextBox from "./components/InputTextBox/InputTextBox.tsx";
 
 const Skills = () => {
   const history = useHistory(); // Call useHistory inside the component
@@ -53,6 +54,7 @@ const Skills = () => {
   };
 
   const [isHovered, setIsHovered] = useState(false);
+  const [email, setEmail] = useState('');
 
   return (
     <div>
@@ -181,14 +183,12 @@ const Skills = () => {
                   <form id="newsletter-form" action="index.html" className="w-100 form needs-validation">
                     <input type="text" name="action" value="subscribe" hidden />
                     <div className="input-group mb-3">
-                      <input
-                        type="email"
-                        name="email"
-                        className="form-control py-3 px-4 form-white"
+                      <InputTextBox
+                        value={email}
                         placeholder="Email"
-                        aria-label="Recipient's username"
-                        aria-describedby="button-addon2"
-                        required
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="form-control py-3 px-4 form-white"
+                        required={true}
                       />
                       <Button
                         type="submit"

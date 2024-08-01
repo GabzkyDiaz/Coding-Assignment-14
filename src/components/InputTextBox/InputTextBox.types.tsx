@@ -5,4 +5,6 @@ export interface InputTextBoxProps {
   backgroundColor?: string;
   visible?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  className?: string;
+  required?: boolean; // Add this line
 }
