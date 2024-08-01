@@ -6,6 +6,7 @@ import Hero from "./components/Hero Image/Hero.tsx";
 import Img from "./components/Img/Img.tsx";
 import InputTextBox from "./components/InputTextBox/InputTextBox.tsx";
 import Link from "./components/Link/Link.tsx"; // Import the updated Link component
+import MobileMenu from "./components/Mobile Menu/MobileMenu.tsx"; // Import the MobileMenu component
 
 const App = () => {
   const history = useHistory(); // Call useHistory inside the component
@@ -62,6 +63,11 @@ const App = () => {
 
   const [isHovered, setIsHovered] = useState(false);
   const [email, setEmail] = useState('');
+  const [isMobileMenuVisible, setIsMobileMenuVisible] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuVisible(!isMobileMenuVisible);
+  };
 
   return (
     <div>
@@ -73,7 +79,7 @@ const App = () => {
               <RouterLink className="logo-container" aria-labelledby="logoLabel" to="/">
                 <img src="image/logo.png" alt="Company Logo" className="img-fluid" />
               </RouterLink>
-              <div className="hamburger-icon" id="navbar-toggler">
+              <div className="hamburger-icon" id="navbar-toggler" onClick={toggleMobileMenu}>
                 <i className="fas fa-bars"></i>
               </div>
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -93,6 +99,13 @@ const App = () => {
           </nav>
         </div>
       </header>
+
+      <MobileMenu
+        options={["Home", "Skills", "Contact"]}
+        visible={isMobileMenuVisible}
+        className="mobile-menu" // Apply your custom class name here
+        backgroundColor="#333"
+      />
 
       <main>
         <Hero className="section-bg px-3 section-hero">

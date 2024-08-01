@@ -37,12 +37,12 @@ const Wrapper = styled.div.withConfig({
   }
 
   @media (max-width: 768px) {
-    width: 70%;
+    width: 100%;
     height: auto;
   }
 
   @media (max-width: 480px) {
-    width: 60%;
+    width: 100%;
     height: auto;
   }
 `;

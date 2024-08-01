@@ -1,15 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
-
-export interface MobileMenuProps {
-  options: string[];
-  disabled?: boolean;
-  backgroundColor?: string;
-  visible?: boolean;
-  defaultExpanded?: boolean;
-  hover?: boolean;
-  focus?: boolean;
-}
+import { MobileMenuProps } from './MobileMenu.types';
 
 const hoverStyles = css<{ $disabled?: boolean }>`
   &:hover {
@@ -81,6 +72,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
   defaultExpanded = false,
   hover = false,
   focus = false,
+  className, // Add this line
 }) => {
   const [isOpen, setIsOpen] = useState(defaultExpanded);
 
@@ -106,6 +98,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
         $disabled={disabled}
         $backgroundColor={backgroundColor}
         $visible={visible}
+        className={className} // Add this line
       >
         {options.map((option, index) => (
           <MenuItem key={index} $disabled={disabled} tabIndex={0} $hover={hover} $focus={focus}>
@@ -116,3 +109,5 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
     </>
   );
 };
+
+export default MobileMenu;

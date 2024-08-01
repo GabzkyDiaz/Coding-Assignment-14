@@ -4,6 +4,7 @@ import { Link as RouterLink, useHistory } from "react-router-dom";
 import Button from "./components/Button/Button.tsx";
 import InputTextBox from "./components/InputTextBox/InputTextBox.tsx";
 import Link from "./components/Link/Link.tsx"; // Import the custom Link component
+import MobileMenu from "./components/Mobile Menu/MobileMenu.tsx"; // Import the MobileMenu component
 
 const Skills = () => {
   const history = useHistory(); // Call useHistory inside the component
@@ -56,6 +57,11 @@ const Skills = () => {
 
   const [isHovered, setIsHovered] = useState(false);
   const [email, setEmail] = useState('');
+  const [isMobileMenuVisible, setIsMobileMenuVisible] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuVisible(!isMobileMenuVisible);
+  };
 
   return (
     <div>
@@ -67,7 +73,7 @@ const Skills = () => {
               <RouterLink className="logo-container" aria-labelledby="logoLabel" to="/">
                 <img src="image/logo.png" alt="Company Logo" className="img-fluid" />
               </RouterLink>
-              <div className="hamburger-icon" id="navbar-toggler">
+              <div className="hamburger-icon" id="navbar-toggler" onClick={toggleMobileMenu}>
                 <i className="fas fa-bars"></i>
               </div>
 
@@ -88,6 +94,14 @@ const Skills = () => {
           </nav>
         </div>
       </header>
+
+      <MobileMenu
+        options={["Home", "Skills", "Contact"]}
+        visible={isMobileMenuVisible}
+        className="mobile-menu" // Apply your custom class name here
+        backgroundColor="#333"
+      />
+
       <main>
         {/* BANNER */}
         <section className="section position-relative" style={{ backgroundImage: "url(image/image-1920x900-8.jpg)" }}>
@@ -178,7 +192,8 @@ const Skills = () => {
                 <h2 className="accent-color fw-normal lh-1 font-2 fs-4 m-0">Newsletter</h2>
                 <label className="font-1 fw-bold mt-2 lh-1">Code Chronicles</label>
                 <p className="text-white">
-                  Stay ahead in the digital realm with our Code Chronicles Newsletter—your monthly dose of web development insights, industry trends, and exclusive tips to elevate your online presence.
+                  Stay ahead in the digital realm with our Code Chronicles Newsletter—your monthly dose of web development insights,
+                  industry trends, and exclusive tips to elevate your online presence.
                 </p>
                 <div>
                   <form id="newsletter-form" action="index.html" className="w-100 form needs-validation">

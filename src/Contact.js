@@ -4,6 +4,7 @@ import { Link as RouterLink, useHistory } from "react-router-dom";
 import Button from "./components/Button/Button.tsx";
 import InputTextBox from "./components/InputTextBox/InputTextBox.tsx";
 import Link from "./components/Link/Link.tsx"; // Import the custom Link component
+import MobileMenu from "./components/Mobile Menu/MobileMenu.tsx"; // Import the MobileMenu component
 
 const Contact = () => {
   const history = useHistory();
@@ -71,6 +72,11 @@ const Contact = () => {
   const [nameError, setNameError] = useState('');
   const [emailError, setEmailError] = useState('');
   const [phoneError, setPhoneError] = useState('');
+  const [isMobileMenuVisible, setIsMobileMenuVisible] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuVisible(!isMobileMenuVisible);
+  };
 
   function validateForm() {
     let isValid = true;
@@ -113,7 +119,7 @@ const Contact = () => {
               <RouterLink className="logo-container" aria-labelledby="logoLabel" to="/">
                 <img src="image/logo.png" alt="Company Logo" className="img-fluid" />
               </RouterLink>
-              <div className="hamburger-icon" id="navbar-toggler">
+              <div className="hamburger-icon" id="navbar-toggler" onClick={toggleMobileMenu}>
                 <i className="fas fa-bars"></i>
               </div>
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -133,6 +139,14 @@ const Contact = () => {
           </nav>
         </div>
       </header>
+
+      <MobileMenu
+        options={["Home", "Skills", "Contact"]}
+        visible={isMobileMenuVisible}
+        className="mobile-menu"
+        backgroundColor="#333"
+      />
+
       <main>
         <section className="section position-relative" style={{ backgroundImage: "url(image/image-1920x900-8.jpg)" }}>
           <div className="image-overlay"></div>
@@ -243,34 +257,32 @@ const Contact = () => {
               <h2 className="accent-color fw-normal lh-1 font-2 fs-4 m-0">Newsletter</h2>
               <label className="font-1 fw-bold mt-2 lh-1">Code Chronicles</label>
               <p className="text-white">
-                Stay ahead in the digital realm with our Code Chronicles Newsletter—your monthly dose of web development insights, industry trends, and exclusive tips to elevate your online presence.
+                Stay ahead in the digital realm with our Code Chronicles Newsletter—your monthly dose of web development insights,
+                industry trends, and exclusive tips to elevate your online presence.
               </p>
               <div>
                 <form id="newsletter-form" className="w-100 form needs-validation">
-                  <input type="text" name="action" value="subscribe" hidden />
-                  <div className="input-group mb-3">
-                    <InputTextBox
-                      value={email}
-                      placeholder="Email"
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="form-control py-3 px-4 form-white"
-                      required={true}
-                    />
-                    <Button
-                      type="submit"
-                      id="button-addon2"
-                      label="Subscribe"
-                      backgroundColor="transparent"
-                      className="btn border-accent-color btn_submit-subscribe accent-color fw-bold px-5"
-                      onClick={handleSubscribe}
-                      onMouseEnter={() => setIsHovered(true)}
-                      onMouseLeave={() => setIsHovered(false)}
-                      style={{
-                        backgroundColor: isHovered ? '#7B7F81' : 'transparent',
-                        color: isHovered ? 'black !important' : '#7B7F81 !important',
-                      }}
-                    />
-                  </div>
+                  <InputTextBox
+                    value={email}
+                    placeholder="Email"
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="form-control py-3 px-4 form-white"
+                    required
+                  />
+                  <Button
+                    type="submit"
+                    id="button-addon2"
+                    label="Subscribe"
+                    backgroundColor="transparent"
+                    className="btn border-accent-color btn_submit-subscribe accent-color fw-bold px-5"
+                    onClick={handleSubscribe}
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                    style={{
+                      backgroundColor: isHovered ? 'rgba(0, 0, 0, 0.1)' : 'transparent',
+                      color: isHovered ? 'black !important' : '#7B7F81 !important',
+                    }}
+                  />
                 </form>
               </div>
               <div className="social-container margin-auto">
