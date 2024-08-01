@@ -4,7 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import Button from "./components/Button/Button.tsx";
 
 const Contact = () => {
-  const history = useHistory(); // Call useHistory inside the component
+  const history = useHistory(); // Call useHistory inside the component add
 
   useEffect(() => {
     // jQuery equivalent logic
