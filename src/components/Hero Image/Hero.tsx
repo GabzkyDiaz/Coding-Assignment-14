@@ -8,6 +8,8 @@ export interface HeroProps {
   disabled?: boolean;
   backgroundColor?: string;
   visible?: boolean;
+  className?: string;
+  children?: React.ReactNode;
 }
 
 interface StyledHeroProps {
@@ -26,11 +28,12 @@ const StyledHero = styled.div.withConfig({
   justify-content: center;
   position: relative;
   color: white;
-  height: 400px;
+  min-height: 400px; /* Ensure it occupies space like a section */
   opacity: ${(props) => (props.disabled ? 0.5 : 1)};
   text-align: center;
   background-color: ${(props) => props.backgroundColor || 'transparent'};
   cursor: ${(props) => (props.disabled ? 'not-allowed' : 'default')};
+  margin-bottom: 0; /* Ensure no overlap with the next section */
 
   &::before {
     content: "";
@@ -47,15 +50,15 @@ const StyledHero = styled.div.withConfig({
   }
 
   @media (max-width: 1024px) {
-    height: 350px;
+    min-height: 350px;
   }
 
   @media (max-width: 768px) {
-    height: 300px;
+    min-height: 300px;
   }
 
   @media (max-width: 480px) {
-    height: 250px;
+    min-height: 250px;
   }
 `;
 
@@ -85,12 +88,21 @@ const Subtitle = styled.h2`
   }
 `;
 
-export const Hero: React.FC<HeroProps> = ({ imageUrl, title, subtitle, disabled, backgroundColor, visible = true }) => {
+export const Hero: React.FC<HeroProps> = ({ imageUrl, title, subtitle, disabled, backgroundColor, visible = true, className, children }) => {
   if (!visible) return null;
   return (
-    <StyledHero imageUrl={imageUrl} disabled={disabled} backgroundColor={backgroundColor} visible={visible}>
+    <StyledHero
+      imageUrl={imageUrl}
+      disabled={disabled}
+      backgroundColor={backgroundColor}
+      visible={visible}
+      className={className}
+    >
       <Title>{title}</Title>
       {subtitle && <Subtitle>{subtitle}</Subtitle>}
+      {children}
     </StyledHero>
   );
 };
+
+export default Hero;

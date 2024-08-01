@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import $ from "jquery";
 import { Link, useHistory } from "react-router-dom";
 import Button from "./components/Button/Button.tsx";
+import Hero from "./components/Hero Image/Hero.tsx";
 
 const App = () => {
   const history = useHistory(); // Call useHistory inside the component
@@ -90,7 +91,7 @@ const App = () => {
       </header>
 
       <main>
-        <section className="section-bg px-3 section-hero">
+        <Hero className="section-bg px-3 section-hero">
           <div className="image-overlay"></div>
           <div className="r-container text-white position-relative" style={{ zIndex: 2 }}>
             <div className="row w-100 m-0">
@@ -111,7 +112,7 @@ const App = () => {
               </div>
             </div>
           </div>
-        </section>
+        </Hero>
 
         <section className="section bg-dark font-white section-about">
           <div className="r-container">
