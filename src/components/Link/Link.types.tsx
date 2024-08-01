@@ -5,4 +5,5 @@ export interface LinkProps {
   onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
   visible?: boolean;
   backgroundColor?: string;
+  className?: string; // Add this line
 }

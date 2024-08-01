@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import $ from "jquery";
-import { Link, useHistory } from "react-router-dom";
+import { Link as RouterLink, useHistory } from "react-router-dom";
 import Button from "./components/Button/Button.tsx";
 import InputTextBox from "./components/InputTextBox/InputTextBox.tsx";
+import Link from "./components/Link/Link.tsx"; // Import the custom Link component
 
 const Contact = () => {
   const history = useHistory();
@@ -109,22 +110,22 @@ const Contact = () => {
           <nav className="navbar navbar-expand-lg">
             <div className="container-fluid">
               <p id="logoLabel" className="sr-only">Company Logo</p>
-              <Link className="logo-container" aria-labelledby="logoLabel" to="/">
+              <RouterLink className="logo-container" aria-labelledby="logoLabel" to="/">
                 <img src="image/logo.png" alt="Company Logo" className="img-fluid" />
-              </Link>
+              </RouterLink>
               <div className="hamburger-icon" id="navbar-toggler">
                 <i className="fas fa-bars"></i>
               </div>
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-3 p-lg-0 p-4 gap-2">
                   <li className="nav-item">
-                    <Link className="nav-link" aria-current="page" to="/">Home</Link>
+                    <RouterLink className="nav-link" aria-current="page" to="/">Home</RouterLink>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link" aria-current="page" to="/skills">Skills</Link>
+                    <RouterLink className="nav-link" aria-current="page" to="/skills">Skills</RouterLink>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link active" aria-current="page" to="/contact">Contact</Link>
+                    <RouterLink className="nav-link active" aria-current="page" to="/contact">Contact</RouterLink>
                   </li>
                 </ul>
               </div>
@@ -155,15 +156,15 @@ const Contact = () => {
                 </p>
                 <label className="accent-color fw-normal lh-1 font-2 fs-4 m-0">SOCIAL MEDIA</label>
                 <div className="social-container">
-                  <a href="https://twitter.com/gabbycdiaz" className="social-item" aria-label="Twitter Profile" title="Twitter">
+                  <Link href="https://twitter.com/gabbycdiaz" className="social-item" aria-label="Twitter Profile" title="Twitter">
                     <i className="fa-brands fa-twitter"></i>
-                  </a>
-                  <a href="https://instagram.com/gabbyjemdiaz?igshid=MTNiYzNiMzkwZA%3D%3D&amp;utm_source=qr" className="social-item" aria-label="Instagram Profile" title="Instagram">
+                  </Link>
+                  <Link href="https://instagram.com/gabbyjemdiaz?igshid=MTNiYzNiMzkwZA%3D%3D&utm_source=qr" className="social-item" aria-label="Instagram Profile" title="Instagram">
                     <i className="fa-brands fa-instagram"></i>
-                  </a>
-                  <a href="https://www.linkedin.com/in/gabby-diaz-a1962528a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" className="social-item" aria-label="LinkedIn Profile" title="LinkedIn">
+                  </Link>
+                  <Link href="https://www.linkedin.com/in/gabby-diaz-a1962528a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" className="social-item" aria-label="LinkedIn Profile" title="LinkedIn">
                     <i className="fa-brands fa-linkedin"></i>
-                  </a>
+                  </Link>
                 </div>
               </div>
 
@@ -273,9 +274,15 @@ const Contact = () => {
                 </form>
               </div>
               <div className="social-container margin-auto">
-                <a href="https://twitter.com/gabbycdiaz" className="social-item" aria-label="Twitter Profile" title="Twitter"><i className="fa-brands fa-twitter"></i></a>
-                <a href="https://instagram.com/gabbyjemdiaz?igshid=MTNiYzNiMzkwZA%3D%3D&amp;utm_source=qr" className="social-item" aria-label="Instagram Profile" title="Instagram"><i className="fa-brands fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/in/gabby-diaz-a1962528a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" className="social-item" aria-label="LinkedIn Profile" title="LinkedIn"><i className="fa-brands fa-linkedin"></i></a>
+                <Link href="https://twitter.com/gabbycdiaz" className="social-item" aria-label="Twitter Profile" title="Twitter">
+                  <i className="fa-brands fa-twitter"></i>
+                </Link>
+                <Link href="https://instagram.com/gabbyjemdiaz?igshid=MTNiYzNiMzkwZA%3D%3D&utm_source=qr" className="social-item" aria-label="Instagram Profile" title="Instagram">
+                  <i className="fa-brands fa-instagram"></i>
+                </Link>
+                <Link href="https://www.linkedin.com/in/gabby-diaz-a1962528a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" className="social-item" aria-label="LinkedIn Profile" title="LinkedIn">
+                  <i className="fa-brands fa-linkedin"></i>
+                </Link>
               </div>
             </div>
           </div>

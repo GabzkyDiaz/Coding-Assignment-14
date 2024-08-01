@@ -10,13 +10,14 @@ const Wrapper = styled.div<{ $visible?: boolean; $backgroundColor?: string; disa
 `;
 
 const StyledLink = styled.a<{ disabled?: boolean }>`
-  color: ${({ disabled }) => (disabled ? 'grey' : 'blue')};
+  color: ${({ disabled }) => (disabled ? 'grey' : 'white')};
   pointer-events: ${({ disabled }) => (disabled ? 'none' : 'auto')};
   text-decoration: none;
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   outline: none; /* Remove default focus outline */
   border: none; /* Remove default border */
   background: none; /* Remove default background */
+  margin-top: 10px; /* Add this line for spacing */  
 
   &:hover {
     text-decoration: ${({ disabled }) => (disabled ? 'none' : 'underline')};
@@ -27,7 +28,7 @@ const StyledLink = styled.a<{ disabled?: boolean }>`
   }
 `;
 
-const Link: React.FC<LinkProps> = ({ href, children, disabled, onClick, visible = true, backgroundColor }) => {
+const Link: React.FC<LinkProps> = ({ href, children, disabled, onClick, visible = true, backgroundColor, className }) => {
   const handleClick = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     if (disabled) {
       event.preventDefault();
@@ -54,6 +55,7 @@ const Link: React.FC<LinkProps> = ({ href, children, disabled, onClick, visible 
         rel={disabled ? undefined : 'noopener noreferrer'}
         disabled={disabled}
         onClick={handleClick}
+        className={className} // Add this line
       >
         {children}
       </StyledLink>

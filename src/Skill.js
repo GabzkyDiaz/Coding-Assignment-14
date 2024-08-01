@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import $ from "jquery";
-import { Link, useHistory } from "react-router-dom";
+import { Link as RouterLink, useHistory } from "react-router-dom";
 import Button from "./components/Button/Button.tsx";
 import InputTextBox from "./components/InputTextBox/InputTextBox.tsx";
+import Link from "./components/Link/Link.tsx"; // Import the custom Link component
 
 const Skills = () => {
   const history = useHistory(); // Call useHistory inside the component
@@ -63,9 +64,9 @@ const Skills = () => {
           <nav className="navbar navbar-expand-lg">
             <div className="container-fluid">
               <p id="logoLabel" className="sr-only">Company Logo</p>
-              <Link className="logo-container" aria-labelledby="logoLabel" to="/">
+              <RouterLink className="logo-container" aria-labelledby="logoLabel" to="/">
                 <img src="image/logo.png" alt="Company Logo" className="img-fluid" />
-              </Link>
+              </RouterLink>
               <div className="hamburger-icon" id="navbar-toggler">
                 <i className="fas fa-bars"></i>
               </div>
@@ -73,13 +74,13 @@ const Skills = () => {
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-3 p-lg-0 p-4 gap-2">
                   <li className="nav-item">
-                    <Link className="nav-link" aria-current="page" to="/">Home</Link>
+                    <RouterLink className="nav-link" aria-current="page" to="/">Home</RouterLink>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link active" aria-current="page" to="/skills">Skills</Link>
+                    <RouterLink className="nav-link active" aria-current="page" to="/skills">Skills</RouterLink>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link" aria-current="page" to="/contact">Contact</Link>
+                    <RouterLink className="nav-link" aria-current="page" to="/contact">Contact</RouterLink>
                   </li>
                 </ul>
               </div>
@@ -208,24 +209,24 @@ const Skills = () => {
                   </form>
                 </div>
                 <div className="social-container margin-auto">
-                  <a href="https://twitter.com/gabbycdiaz" className="social-item" aria-label="Twitter Profile" title="Twitter">
+                  <Link href="https://twitter.com/gabbycdiaz" className="social-item" aria-label="Twitter Profile" title="Twitter">
                     <i className="fa-brands fa-twitter"></i>
-                  </a>
-                  <a href="https://instagram.com/gabbyjemdiaz?igshid=MTNiYzNiMzkwZA%3D%3D&utm_source=qr" className="social-item" aria-label="Instagram Profile" title="Instagram">
+                  </Link>
+                  <Link href="https://instagram.com/gabbyjemdiaz?igshid=MTNiYzNiMzkwZA%3D%3D&utm_source=qr" className="social-item" aria-label="Instagram Profile" title="Instagram">
                     <i className="fa-brands fa-instagram"></i>
-                  </a>
-                  <a href="https://www.linkedin.com/in/gabby-diaz-a1962528a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" className="social-item" aria-label="LinkedIn Profile" title="LinkedIn">
+                  </Link>
+                  <Link href="https://www.linkedin.com/in/gabby-diaz-a1962528a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" className="social-item" aria-label="LinkedIn Profile" title="LinkedIn">
                     <i className="fa-brands fa-linkedin"></i>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
           </section>
           <div className="py-4 text-gray bottom">
             <ul>
-              <li><a href="https://gabbydiaz.com/index.html">Home</a></li>
-              <li><a href="https://gabbydiaz.com/skills.html">Skills</a></li>
-              <li><a href="https://gabbydiaz.com/contact.html">Contact</a></li>
+              <li><RouterLink to="https://gabbydiaz.com/index.html">Home</RouterLink></li>
+              <li><RouterLink to="https://gabbydiaz.com/skills.html">Skills</RouterLink></li>
+              <li><RouterLink to="https://gabbydiaz.com/contact.html">Contact</RouterLink></li>
             </ul>
             <div className="r-container text-center">
               <span>
