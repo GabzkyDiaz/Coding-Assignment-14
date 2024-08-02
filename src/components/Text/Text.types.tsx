@@ -6,4 +6,5 @@ export interface TextProps {
   backgroundColor?: string;
   disabled?: boolean;
   fontColor?: string;
+  className?: string; // Add the className prop
 }

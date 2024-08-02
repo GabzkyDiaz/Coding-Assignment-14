@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
 export interface TextProps {
-  text: string;
+  text?: string; // Add the text prop back
+  children?: ReactNode;
   size?: 'small' | 'medium' | 'large';
   bold?: boolean;
   visible?: boolean;
   backgroundColor?: string;
   disabled?: boolean;
   fontColor?: string;
+  className?: string;
 }
 
 interface StyledTextProps {
@@ -32,7 +34,7 @@ const StyledText = styled.span.withConfig({
   background-color: ${(props) => props.backgroundColor || 'transparent'};
   opacity: ${(props) => (props.disabled ? 0.5 : 1)};
   cursor: ${(props) => (props.disabled ? 'not-allowed' : 'default')};
-  color: ${(props) => props.color || 'black'};
+  color: ${(props) => props.color || 'white'};
 
   @media (max-width: 1024px) {
     font-size: ${(props) => {
@@ -59,7 +61,13 @@ const StyledText = styled.span.withConfig({
   }
 `;
 
-export const Text: React.FC<TextProps> = ({ text, size, bold, visible = true, backgroundColor, disabled, fontColor }) => {
+export const Text: React.FC<TextProps> = ({ text, children, size, bold, visible = true, backgroundColor, disabled, fontColor, className }) => {
   if (!visible) return null;
-  return <StyledText size={size} isBold={bold} backgroundColor={backgroundColor} disabled={disabled} color={fontColor}>{text}</StyledText>;
+  return (
+    <StyledText className={className} size={size} isBold={bold} backgroundColor={backgroundColor} disabled={disabled} color={fontColor}>
+      {text || children} {/* Render text prop or children if text is not provided */}
+    </StyledText>
+  );
 };
+
+export default Text;

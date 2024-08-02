@@ -6,6 +6,7 @@ import InputTextBox from "./components/InputTextBox/InputTextBox.tsx";
 import Link from "./components/Link/Link.tsx"; // Import the custom Link component
 import MobileMenu from "./components/Mobile Menu/MobileMenu.tsx"; // Import the MobileMenu component
 import Section from "./components/Section/Section.tsx";
+import Text from "./components/Text/Text.tsx";
 
 const Contact = () => {
   const history = useHistory();
@@ -193,19 +194,19 @@ const Contact = () => {
             className="r-container section text-white position-relative"
             style={{ zIndex: 2 }}
           >
-            <div className="d-flex flex-column justify-content-center align-items-center text-center">
+            <Text className="d-flex flex-column justify-content-center align-items-center text-center">
               <label className="accent-color fw-normal font-2 fs-4">
                 CONTACT
               </label>
               <h1 className="font-1 fw-bold white-color">Connect With Me</h1>
-            </div>
+            </Text>
           </div>
         </Section>
 
         <Section className="section section-contact">
           <div className="r-container">
             <div className="contact__wrapper">
-              <div className="contact__left">
+              <Text className="contact__left">
                 <h2 className="accent-color fw-normal lh-1 font-2 fs-4 m-0">
                   GET IN TOUCH
                 </h2>
@@ -252,7 +253,7 @@ const Contact = () => {
                     <i className="fa-brands fa-linkedin"></i>
                   </Link>
                 </div>
-              </div>
+              </Text>
 
               <div className="contact__right">
                 <div className="form-section">
@@ -355,7 +356,7 @@ const Contact = () => {
         >
           <div className="image-overlay"></div>
           <div className="r-container position-relative" style={{ zIndex: 2 }}>
-            <div className="d-flex flex-column gap-4 align-items-center justify-content-center text-center">
+            <Text className="d-flex flex-column gap-4 align-items-center justify-content-center text-center">
               <h2 className="accent-color fw-normal lh-1 font-2 fs-4 m-0">
                 Newsletter
               </h2>
@@ -426,7 +427,7 @@ const Contact = () => {
                   <i className="fa-brands fa-linkedin"></i>
                 </Link>
               </div>
-            </div>
+            </Text>
           </div>
         </section>
         <div className="py-4 text-gray bottom">

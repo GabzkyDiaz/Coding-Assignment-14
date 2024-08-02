@@ -18,7 +18,7 @@ export default {
   title: 'StyledComponents/Text',
   component: Text,
   argTypes: {
-    text: { control: 'text' },
+    text: { control: 'text' }, // Keep the text prop in the argTypes
     size: { control: 'radio', options: ['small', 'medium', 'large'] },
     bold: { control: 'boolean' },
     visible: { control: 'boolean' },

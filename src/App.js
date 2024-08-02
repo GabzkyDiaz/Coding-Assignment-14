@@ -8,6 +8,7 @@ import InputTextBox from "./components/InputTextBox/InputTextBox.tsx";
 import Link from "./components/Link/Link.tsx"; // Import the updated Link component
 import MobileMenu from "./components/Mobile Menu/MobileMenu.tsx"; // Import the MobileMenu component
 import Section from "./components/Section/Section.tsx";
+import Text from "./components/Text/Text.tsx";
 
 const App = () => {
   const history = useHistory(); // Call useHistory inside the component
@@ -73,7 +74,7 @@ const App = () => {
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };
-  
+
   return (
     <div>
       <header id="header" className="fixed-top py-lg-1 py-3 glass-effect">
@@ -123,14 +124,14 @@ const App = () => {
                 </div>
               </div>
               <div className="col col-2">
-                <div className="height-100 d-flex text-align-right flex-column gap-2 justify-content-center text-lg-end h-100">
+                <Text className="height-100 d-flex text-align-right flex-column gap-2 justify-content-center text-lg-end h-100">
                   <h1 className="font-0 fw-bold lh-1 fs-very-large white-color">Gabby Diaz</h1>
                   <span className="accent-color fs-4 font-family-3">Web Developer</span>
                   <p className="font-3 white-color">
                     Welcome to the digital realm crafted by Gabby Diaz, where innovation meets code, and web development becomes an art.
                     Here, each line of code is a stroke of creativity, crafting a virtual landscape where the extraordinary becomes the norm.
                   </p>
-                </div>
+                </Text>
               </div>
             </div>
           </div>
@@ -144,7 +145,7 @@ const App = () => {
                   <Img src="image/image-600x400-1.jpg" alt="" className="mask-image img-fluid mask-image-no-1" />
                 </div>
                 <div className="col col-lg-7">
-                  <div className="d-flex flex-column gap-3">
+                  <Text className="d-flex flex-column gap-3">
                     <h2 className="accent-color fw-normal font-2 fs-4">ABOUT ME</h2>
                     <label className="font-1 fw-bold">"Unveiling the Creator Behind the Code: Gabby Diaz, Your Web Development Virtuoso."</label>
                     <div className="divider accent-color">
@@ -155,35 +156,35 @@ const App = () => {
                       Join me on a journey through the captivating fusion of creativity and technology, where every project is a canvas, and innovation knows no bounds.
                       Welcome to the realm where pixels and passion converge, and the extraordinary unfolds.
                     </p>
-                  </div>
+                  </Text>
                 </div>
               </div>
               <div className="row row-cols-1 row-cols-lg-3">
                 <div className="col">
-                  <div className="d-flex flex-column p-4 gap-3 border-bottom-hover">
+                  <Text className="d-flex flex-column p-4 gap-3 border-bottom-hover">
                     <label className="font-1 fw-bold">My Vision</label>
                     <p>
                       Empowering digital landscapes with visionary expertise, I strive to redefine the online experience through cutting-edge web development and design.
                     </p>
-                  </div>
+                  </Text>
                 </div>
                 <div className="col">
-                  <div className="d-flex flex-column p-4 gap-3 border-bottom-hover">
+                  <Text className="d-flex flex-column p-4 gap-3 border-bottom-hover">
                     <label className="font-1 fw-bold">My Mission</label>
                     <p>
                       Elevating online experiences through innovative web solutions, my vision is to seamlessly blend creativity and functionality,
                       shaping a digital world where every interaction is both captivating and intuitive.
                     </p>
-                  </div>
+                  </Text>
                 </div>
                 <div className="col">
-                  <div className="d-flex flex-column p-4 gap-3 border-bottom-hover">
+                  <Text className="d-flex flex-column p-4 gap-3 border-bottom-hover">
                     <label className="font-1 fw-bold">My Goal</label>
                     <p>
                       My goal is to not just build websites, but to architect digital experiences that resonate, inspire, and leave an indelible mark on
                       the ever-evolving tapestry of the online landscape.
                     </p>
-                  </div>
+                  </Text>
                 </div>
               </div>
             </div>
@@ -194,18 +195,18 @@ const App = () => {
           <div className="r-container">
             <div className="heading d-flex flex-lg-row flex-row gap-3 mb-3">
               <div className="col col-lg-7">
-                <div className="d-flex flex-column h-100 justify-content-center text-lg-end gap-3 text-align-right">
-                  <h2 className="black fw-normal fs-4">MY WORK</h2>
-                  <p className="font-1 fw-bold">My Best Project</p>
+                <Text className="d-flex flex-column h-100 justify-content-center text-lg-end gap-3 text-align-right">
+                  <h2 className="black fw-normal fs-4 black-color">MY WORK</h2>
+                  <p className="font-1 fw-bold black-color">My Best Project</p>
                   <div className="divider accent-color ms-lg-auto flex-lg-row-reverse">
                     <i className="fa-solid fa-square-full"></i>
                   </div>
-                  <p>
+                  <p className="black-color ">
                     In the vast digital realm, my work stands as a testament to precision and creativity in web development. Meticulously crafted websites
                     seamlessly combine functionality and aesthetics, reflecting a commitment to delivering immersive user experiences that transcend the ordinary
                     and leave a lasting impression.
                   </p>
-                </div>
+                </Text>
               </div>
               <div className="col col-lg-5">
                 <div className="m-0">
@@ -219,12 +220,12 @@ const App = () => {
                   <div className="mb-4">
                     <Img src="image/image-600x800-1.png" alt="" className="img-fluid hover-scale" />
                   </div>
-                  <div className="text-center">
-                    <p>
+                  <Text className="text-center">
+                    <p className="black-color">
                       <label className="black fw-normal font-2">Explore the Wave's</label>
                     </p>
-                    <p className="font-2 fw-bold">Thrills Unleashed</p>
-                  </div>
+                    <p className="font-2 fw-bold black-color">Thrills Unleashed</p>
+                  </Text>
                 </div>
               </div>
               <div className="col mb-3">
@@ -232,24 +233,24 @@ const App = () => {
                   <div className="mb-4">
                     <Img src="image/image-600x800-2.png" alt="" className="img-fluid hover-scale" />
                   </div>
-                  <div className="text-center">
-                    <p>
+                  <Text className="text-center">
+                    <p className="black-color">
                       <label className="black fw-normal font-2">Home Page</label>
                     </p>
-                    <p className="font-2 fw-bold">Adventure Gateway</p>
-                  </div>
+                    <p className="font-2 fw-bold black-color">Adventure Gateway</p>
+                  </Text>
                 </div>
               </div>
               <div className="col mb-3">
-                <div className="d-flex flex-column">
-                  <label className="font-2 fw-bold">MapleWave Surf Co.</label>
-                  <p>
+                <Text className="d-flex flex-column">
+                  <label className="font-2 fw-bold black-color">MapleWave Surf Co.</label>
+                  <p className="black-color">
                     MapleWave Surf Co. is a Canadian-born surfing company that brings the spirit of adventure to the waves. As a web developer, I crafted an
                     immersive online platform for MapleWave, blending intuitive navigation with visually stunning elements, capturing the essence of the great
                     Canadian outdoors and the exhilaration of surfing.
                   </p>
-                  <label className="font-2 fw-normal black fs-4 mb-4">CATEGORIES</label>
-                  <ul className="mb-3-0 p-0 d-flex flex-column gap-2" style={{ listStyle: "none" }}>
+                  <label className="font-2 fw-normal black fs-4 mb-4 black-color">CATEGORIES</label>
+                  <ul className="mb-3-0 p-0 d-flex flex-column gap-2 black-color font-4" style={{ listStyle: "none" }}>
                     <li>
                       <div className="d-flex gap-3 align-items-center">
                         <i className="fa-solid fa-minus"></i>Digital Branding
@@ -271,7 +272,7 @@ const App = () => {
                       </div>
                     </li>
                   </ul>
-                </div>
+                </Text>
               </div>
             </div>
           </div>
@@ -281,17 +282,17 @@ const App = () => {
           <div className="r-container">
             <div className="d-flex flex-lg-row flex-column gap-3 mb-3 content">
               <div className="col col-lg-5">
-                <div className="m-0 d-flex flex-column gap-3 text-lg-end text-start">
+                <Text className="m-0 d-flex flex-column gap-3 text-lg-end text-start">
                   <Img src="image/image-600x400-3.jpg" alt="" className="mask-image img-fluid mask-image-no-3" />
                   <label className="font-1 fw-bold white-color">Elevating Digital Realms with Expert Web Development.</label>
                   <p className="white-color">
                     Through years of dedicated craftsmanship, I have seamlessly blended creativity and functionality to shape immersive online experiences that
                     transcend expectations.
                   </p>
-                </div>
+                </Text>
               </div>
               <div className="col col-lg-7">
-                <div className="d-flex flex-column h-100 justify-content-center text-lg-start gap-3">
+                <Text className="d-flex flex-column h-100 justify-content-center text-lg-start gap-3">
                   <label className="accent-color-testimonial fw-normal font-2 fs-4">TESTIMONIAL</label>
                   <label className="font-2 fw-bold white-color">What they say about me?</label>
                   <div className="overflow-hidden mt-4 testimonial">
@@ -347,27 +348,27 @@ const App = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </Text>
               </div>
             </div>
             <div className="row row-cols-1 row-cols-lg-4 gap-3-testimonial">
               <div className="col">
-                <div className="d-flex flex-column text-center p-4 gap-3 border-bottom-hover">
+                <Text className="d-flex flex-column text-center p-4 gap-3 border-bottom-hover">
                   <h1 className="font-1 fw-bold m-0 lh-1 accent-color">25+</h1>
                   <p className="font-1 fs-4 fw-bold text-gray">Websites Launched</p>
-                </div>
+                </Text>
               </div>
               <div className="col">
-                <div className="d-flex flex-column text-center p-4 gap-3 border-bottom-hover">
+                <Text className="d-flex flex-column text-center p-4 gap-3 border-bottom-hover">
                   <h1 className="font-1 fw-bold m-0 lh-1 accent-color">50%</h1>
                   <p className="font-1 fs-4 fw-bold text-gray">Page Load Time Improvement</p>
-                </div>
+                </Text>
               </div>
               <div className="col">
-                <div className="d-flex flex-column text-center p-4 gap-3 border-bottom-hover">
+                <Text className="d-flex flex-column text-center p-4 gap-3 border-bottom-hover">
                   <h1 className="font-1 fw-bold m-0 lh-1 accent-color">98%</h1>
                   <p className="font-1 fs-4 fw-bold text-gray">Client Satisfaction Rate</p>
-                </div>
+                </Text>
               </div>
             </div>
           </div>
@@ -378,7 +379,7 @@ const App = () => {
         <section className="section position-relative text-white" style={{ backgroundImage: "url(image/image-1920x900-7.jpg)" }}>
           <div className="image-overlay"></div>
           <div className="r-container position-relative" style={{ zIndex: 2 }}>
-            <div className="d-flex flex-column gap-4 align-items-center justify-content-center text-center">
+            <Text className="d-flex flex-column gap-4 align-items-center justify-content-center text-center">
               <h2 className="accent-color fw-normal lh-1 font-2 fs-4 m-0">Newsletter</h2>
               <label className="font-1 fw-bold mt-2 lh-1">Code Chronicles</label>
               <p className="text-white">
@@ -421,7 +422,7 @@ const App = () => {
                   <i className="fa-brands fa-linkedin"></i>
                 </Link>
               </div>
-            </div>
+            </Text>
           </div>
         </section>
         <div className="py-4 text-gray bottom">

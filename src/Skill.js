@@ -6,6 +6,7 @@ import InputTextBox from "./components/InputTextBox/InputTextBox.tsx";
 import Link from "./components/Link/Link.tsx"; // Import the custom Link component
 import MobileMenu from "./components/Mobile Menu/MobileMenu.tsx"; // Import the MobileMenu component
 import Section from "./components/Section/Section.tsx";
+import Text from "./components/Text/Text.tsx";
 
 const Skills = () => {
   const history = useHistory(); // Call useHistory inside the component
@@ -112,16 +113,16 @@ const Skills = () => {
         <Section className="section position-relative" style={{ backgroundImage: "url(image/image-1920x900-8.jpg)" }}>
           <div className="image-overlay"></div>
           <div className="r-container section text-white position-relative" style={{ zIndex: 2 }}>
-            <div className="d-flex flex-column justify-content-center align-items-center text-center">
+            <Text className="d-flex flex-column justify-content-center align-items-center text-center">
               <label className="accent-color fw-normal font-2 fs-4">My Skills</label>
               <h1 className="font-1 fw-bold white-color">Crafting Digital Experiences</h1>
-            </div>
+            </Text>
           </div>
         </Section>
 
         <section className="section section-skills">
           <div className="r-container">
-            <div className="skills__wrapper">
+            <Text className="skills__wrapper">
               <h2 className="accent-color fw-normal lh-1 font-2 fs-4 m-0">Features</h2>
               <label className="font-1 fw-bold m-0 lh-1 white-color">Design and Development Skill</label>
               <div className="divider m-0 accent-color me-auto">
@@ -184,7 +185,7 @@ const Skills = () => {
                   <div className="skill-bar-percent">60%</div>
                 </div>
               </div>
-            </div>
+            </Text>
           </div>
         </section>
 
@@ -193,7 +194,7 @@ const Skills = () => {
           <section className="section position-relative text-white" style={{ backgroundImage: "url(image/image-1920x900-7.jpg)" }}>
             <div className="image-overlay"></div>
             <div className="r-container position-relative" style={{ zIndex: 2 }}>
-              <div className="d-flex flex-column gap-4 align-items-center justify-content-center text-center">
+              <Text className="d-flex flex-column gap-4 align-items-center justify-content-center text-center">
                 <h2 className="accent-color fw-normal lh-1 font-2 fs-4 m-0">Newsletter</h2>
                 <label className="font-1 fw-bold mt-2 lh-1">Code Chronicles</label>
                 <p className="text-white">
@@ -239,7 +240,7 @@ const Skills = () => {
                     <i className="fa-brands fa-linkedin"></i>
                   </Link>
                 </div>
-              </div>
+              </Text>
             </div>
           </section>
           <div className="py-4 text-gray bottom">
