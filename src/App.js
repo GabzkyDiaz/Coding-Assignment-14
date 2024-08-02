@@ -7,6 +7,7 @@ import Img from "./components/Img/Img.tsx";
 import InputTextBox from "./components/InputTextBox/InputTextBox.tsx";
 import Link from "./components/Link/Link.tsx"; // Import the updated Link component
 import MobileMenu from "./components/Mobile Menu/MobileMenu.tsx"; // Import the MobileMenu component
+import Section from "./components/Section/Section.tsx";
 
 const App = () => {
   const history = useHistory(); // Call useHistory inside the component
@@ -69,6 +70,10 @@ const App = () => {
     setIsMobileMenuVisible(!isMobileMenuVisible);
   };
 
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
+  
   return (
     <div>
       <header id="header" className="fixed-top py-lg-1 py-3 glass-effect">
@@ -131,7 +136,7 @@ const App = () => {
           </div>
         </Hero>
 
-        <section className="section bg-dark font-white section-about">
+        <Section className="section bg-dark font-white section-about">
           <div className="r-container">
             <div className="d-flex flex-column gap-3 text-white">
               <div className="row row-cols-1 row-cols-lg-2">
@@ -183,9 +188,9 @@ const App = () => {
               </div>
             </div>
           </div>
-        </section>
+        </Section>
 
-        <section className="section bg-white section-my-work">
+        <Section className="section bg-white section-my-work">
           <div className="r-container">
             <div className="heading d-flex flex-lg-row flex-row gap-3 mb-3">
               <div className="col col-lg-7">
@@ -270,9 +275,9 @@ const App = () => {
               </div>
             </div>
           </div>
-        </section>
+        </Section>
 
-        <section className="section-testimonial">
+        <Section className="section-testimonial">
           <div className="r-container">
             <div className="d-flex flex-lg-row flex-column gap-3 mb-3 content">
               <div className="col col-lg-5">
@@ -366,7 +371,7 @@ const App = () => {
               </div>
             </div>
           </div>
-        </section>
+        </Section>
       </main>
 
       <footer className="footer">
@@ -421,9 +426,21 @@ const App = () => {
         </section>
         <div className="py-4 text-gray bottom">
           <ul>
-            <li><RouterLink to="https://gabbydiaz.com/index.html">Home</RouterLink></li>
-            <li><RouterLink to="https://gabbydiaz.com/skills.html">Skills</RouterLink></li>
-            <li><RouterLink to="https://gabbydiaz.com/contact.html">Contact</RouterLink></li>
+          <li>
+              <RouterLink to="/" onClick={scrollToTop}>
+                Home
+              </RouterLink>
+            </li>
+            <li>
+              <RouterLink to="/skills" onClick={scrollToTop}>
+                Skills
+              </RouterLink>
+            </li>
+            <li>
+              <RouterLink to="/contact" onClick={scrollToTop}>
+                Contact
+              </RouterLink>
+            </li>
           </ul>
           <div className="r-container text-center">
             <span>

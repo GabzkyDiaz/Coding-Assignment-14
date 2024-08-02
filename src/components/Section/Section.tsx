@@ -2,9 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { SectionProps } from './Section.types';
 
-const StyledSection = styled.section<{ $disabled?: boolean; $backgroundColor?: string }>`
+const StyledSection = styled.section<{ $disabled?: boolean }>`
   padding: 20px;
-  background-color: ${({ $backgroundColor }) => $backgroundColor || 'white'};
+  margin-top: 100px; /* Add top margin to prevent overlap */
+  margin-bottom: 80px;
   opacity: ${({ $disabled }) => ($disabled ? 0.5 : 1)};
   cursor: ${({ $disabled }) => ($disabled ? 'not-allowed' : 'auto')};
 
@@ -25,10 +26,10 @@ const StyledSection = styled.section<{ $disabled?: boolean; $backgroundColor?: s
   }
 `;
 
-const Section: React.FC<SectionProps> = ({ children, disabled, backgroundColor, visible = true }) => {
+const Section: React.FC<SectionProps> = ({ children, disabled, visible = true, className, style }) => {
   if (!visible) return null;
   return (
-    <StyledSection $disabled={disabled} $backgroundColor={backgroundColor}>
+    <StyledSection className={className} $disabled={disabled} style={style}>
       {children}
     </StyledSection>
   );

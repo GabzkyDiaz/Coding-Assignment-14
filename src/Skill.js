@@ -5,6 +5,7 @@ import Button from "./components/Button/Button.tsx";
 import InputTextBox from "./components/InputTextBox/InputTextBox.tsx";
 import Link from "./components/Link/Link.tsx"; // Import the custom Link component
 import MobileMenu from "./components/Mobile Menu/MobileMenu.tsx"; // Import the MobileMenu component
+import Section from "./components/Section/Section.tsx";
 
 const Skills = () => {
   const history = useHistory(); // Call useHistory inside the component
@@ -63,6 +64,10 @@ const Skills = () => {
     setIsMobileMenuVisible(!isMobileMenuVisible);
   };
 
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <div>
       <header id="header" className="fixed-top py-lg-1 py-3 glass-effect">
@@ -104,7 +109,7 @@ const Skills = () => {
 
       <main>
         {/* BANNER */}
-        <section className="section position-relative" style={{ backgroundImage: "url(image/image-1920x900-8.jpg)" }}>
+        <Section className="section position-relative" style={{ backgroundImage: "url(image/image-1920x900-8.jpg)" }}>
           <div className="image-overlay"></div>
           <div className="r-container section text-white position-relative" style={{ zIndex: 2 }}>
             <div className="d-flex flex-column justify-content-center align-items-center text-center">
@@ -112,7 +117,7 @@ const Skills = () => {
               <h1 className="font-1 fw-bold white-color">Crafting Digital Experiences</h1>
             </div>
           </div>
-        </section>
+        </Section>
 
         <section className="section section-skills">
           <div className="r-container">
@@ -239,9 +244,21 @@ const Skills = () => {
           </section>
           <div className="py-4 text-gray bottom">
             <ul>
-              <li><RouterLink to="https://gabbydiaz.com/index.html">Home</RouterLink></li>
-              <li><RouterLink to="https://gabbydiaz.com/skills.html">Skills</RouterLink></li>
-              <li><RouterLink to="https://gabbydiaz.com/contact.html">Contact</RouterLink></li>
+              <li>
+              <RouterLink to="/" onClick={scrollToTop}>
+                Home
+              </RouterLink>
+            </li>
+            <li>
+              <RouterLink to="/skills" onClick={scrollToTop}>
+                Skills
+              </RouterLink>
+            </li>
+            <li>
+              <RouterLink to="/contact" onClick={scrollToTop}>
+                Contact
+              </RouterLink>
+            </li>
             </ul>
             <div className="r-container text-center">
               <span>
