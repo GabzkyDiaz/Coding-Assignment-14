@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host",
+    "dev": "vite --host",    
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
@@ -35,6 +35,8 @@
     "testEnvironment": "jest-environment-jsdom"
   },
   "dependencies": {
+    "@rollup/plugin-babel": "^6.0.4",
+    "@types/rollup": "^0.54.0",
     "bootstrap": "5.2.3",
     "jquery": "^3.6.0",
     "react": "^18.2.0",
@@ -44,8 +46,8 @@
     "styled-components": "^6.1.11"
   },
   "devDependencies": {
-    "@babel/core": "^7.24.7",
-    "@babel/preset-env": "^7.24.7",
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.3",
     "@babel/preset-react": "^7.24.7",
     "@babel/preset-typescript": "^7.24.7",
     "@chromatic-com/storybook": "^1.5.0",
@@ -67,7 +69,7 @@
     "@types/react-dom": "^18.2.22",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
-    "@vitejs/plugin-react": "^4.2.1",
+    "@vitejs/plugin-react": "^4.3.1",
     "babel-jest": "^29.7.0",
     "concurrently": "^8.2.2",
     "eslint": "^8.57.0",

@@ -1,9 +1,9 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import App from "./App";
-import Skill from "./Skill";
-import Contact from "./Contact";
+import App from "./App.js";
+import Skill from "./Skill.js";
+import Contact from "./Contact.js";
 
 const Root = () => (
   <Router>
@@ -15,9 +15,11 @@ const Root = () => (
   </Router>
 );
 
-ReactDOM.render(
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
+
+root.render(
   <React.StrictMode>
     <Root />
-  </React.StrictMode>,
-  document.getElementById("root"),
+  </React.StrictMode>
 );

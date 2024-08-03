@@ -14,7 +14,12 @@ const focusStyles = css<{ $disabled?: boolean }>`
   }
 `;
 
-const MenuContainer = styled.div<{ $isOpen: boolean; $disabled: boolean; $backgroundColor?: string; $visible: boolean }>`
+const MenuContainer = styled.div<{
+  $isOpen: boolean;
+  $disabled: boolean;
+  $backgroundColor?: string;
+  $visible: boolean;
+}>`
   position: fixed;
   top: 0;
   left: ${(props) => (props.$isOpen ? '0' : '-100%')};
@@ -42,7 +47,11 @@ const MenuItem = styled.div<{ $disabled?: boolean; $hover?: boolean; $focus?: bo
   ${(props) => props.$focus && focusStyles}
 `;
 
-const MenuButton = styled.button<{ $backgroundColor?: string; $disabled: boolean; $hover: boolean }>`
+const MenuButton = styled.button<{
+  $backgroundColor?: string;
+  $disabled: boolean;
+  $hover: boolean;
+}>`
   position: fixed;
   top: 10px;
   left: 10px;
@@ -53,11 +62,13 @@ const MenuButton = styled.button<{ $backgroundColor?: string; $disabled: boolean
   border-radius: 5px;
   cursor: ${(props) => (props.$disabled ? 'not-allowed' : 'pointer')};
 
-  ${(props) => props.$hover && css<{ $disabled: boolean; $backgroundColor?: string }>`
-    &:hover {
-      background-color: ${(props) => (props.$disabled ? props.$backgroundColor : '#575757')};
-    }
-  `}
+  ${(props) =>
+    props.$hover &&
+    css<{ $disabled: boolean; $backgroundColor?: string }>`
+      &:hover {
+        background-color: ${(props) => (props.$disabled ? props.$backgroundColor : '#575757')};
+      }
+    `}
 
   &:focus {
     outline: 2px solid white;
@@ -90,7 +101,12 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
 
   return (
     <>
-      <MenuButton onClick={toggleMenu} $disabled={disabled} $backgroundColor={backgroundColor} $hover={hover}>
+      <MenuButton
+        onClick={toggleMenu}
+        $disabled={disabled}
+        $backgroundColor={backgroundColor}
+        $hover={hover}
+      >
         {isOpen ? 'Collapse' : 'Expand'}
       </MenuButton>
       <MenuContainer
@@ -101,7 +117,13 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
         className={className} // Add this line
       >
         {options.map((option, index) => (
-          <MenuItem key={index} $disabled={disabled} tabIndex={0} $hover={hover} $focus={focus}>
+          <MenuItem
+            key={index}
+            $disabled={disabled}
+            tabIndex={0}
+            $hover={hover}
+            $focus={focus}
+          >
             {option}
           </MenuItem>
         ))}

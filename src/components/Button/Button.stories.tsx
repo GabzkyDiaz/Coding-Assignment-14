@@ -1,3 +1,5 @@
+// @ts-ignore
+import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import { userEvent, within } from '@storybook/testing-library';
 import { fn } from '@storybook/test';

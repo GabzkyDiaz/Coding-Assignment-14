@@ -1,6 +1,9 @@
+// @ts-ignore
+import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import { userEvent, within } from '@storybook/testing-library';
-import { MobileMenu, MobileMenuProps } from './MobileMenu';
+import { MobileMenu } from './MobileMenu';
+import { MobileMenuProps } from './MobileMenu.types';
 
 export default {
   title: 'StyledComponents/MobileMenu',
@@ -31,7 +34,7 @@ Collapsed.args = {
   focus: false,
 };
 
-Collapsed.play = async ({ canvasElement }) => {
+Collapsed.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
   const button = await canvas.getByRole('button', { name: /Expand/i });
   await userEvent.click(button);
@@ -48,7 +51,7 @@ Hover.args = {
   focus: false,
 };
 
-Hover.play = async ({ canvasElement }) => {
+Hover.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
   const menuItem = await canvas.getByText('Home');
   await userEvent.hover(menuItem);
@@ -65,7 +68,7 @@ Focus.args = {
   focus: true,
 };
 
-Focus.play = async ({ canvasElement }) => {
+Focus.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
   const menuItem = await canvas.getByText('Home');
   await userEvent.click(menuItem);  // Focus is typically set by click
@@ -82,7 +85,7 @@ Expanded.args = {
   focus: false,
 };
 
-Expanded.play = async ({ canvasElement }) => {
+Expanded.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
   const button = await canvas.getByRole('button', { name: /Collapse/i });
   await userEvent.click(button);
@@ -99,7 +102,7 @@ Disabled.args = {
   focus: false,
 };
 
-Disabled.play = async ({ canvasElement }) => {
+Disabled.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
   const button = await canvas.getByRole('button', { name: /Expand/i });
   await userEvent.click(button);  // Clicking disabled button should not change the state
