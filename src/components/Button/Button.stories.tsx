@@ -31,7 +31,7 @@ Primary.args = {
   visible: true,
   disabled: false,
   hoverColor: '#3700b3',
-  onClick: fn(), // Explicitly set the onClick action
+  onClick: fn(), // Explicitly set the onClick actionn
 };
 
 Primary.play = async ({ canvasElement }) => {
