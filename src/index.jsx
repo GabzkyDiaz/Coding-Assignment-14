@@ -1,9 +1,13 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter, HashRouter, Route, Switch } from "react-router-dom";
 import App from "./App.js";
 import Skill from "./Skill.js";
 import Contact from "./Contact.js";
+
+const isGitHubPages = window.location.hostname === "gabzkydiaz.github.io"; // Change this to your GitHub Pages hostname
+
+const Router = isGitHubPages ? HashRouter : BrowserRouter;
 
 const Root = () => (
   <Router>
