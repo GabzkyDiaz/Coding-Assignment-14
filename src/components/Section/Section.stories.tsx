@@ -89,3 +89,22 @@ Disabled.args = {
   visible: true,
   backgroundColor: 'grey',
 };
+
+// Interaction Tests
+Disabled.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const section = await canvas.getByText('This section is disabled');
+  console.log('Disabled section retrieved:', section);
+
+  // Attempt to click the disabled section
+  try {
+    await userEvent.click(section);
+  } catch (e) {
+    console.log('Cannot click a disabled section');
+  }
+
+  // Log the disabled state
+  if (section.hasAttribute('disabled')) {
+    console.log('Section is disabled');
+  }
+};

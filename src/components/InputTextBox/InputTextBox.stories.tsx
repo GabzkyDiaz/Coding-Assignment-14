@@ -121,3 +121,37 @@ Disabled.args = {
   visible: true,
   backgroundColor: 'transparent',
 };
+
+// Interaction Tests
+Empty.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const input = await canvas.getByPlaceholderText('Type something...') as HTMLInputElement;
+  await userEvent.type(input, 'Hello World');
+  console.log('Typed text:', input.value); // Log the typed text
+};
+
+Filled.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const input = await canvas.getByDisplayValue('Some text') as HTMLInputElement;
+  await userEvent.clear(input);
+  await userEvent.type(input, 'New text');
+  console.log('New text:', input.value); // Log the new text
+};
+
+Disabled.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const input = await canvas.getByDisplayValue('Disabled') as HTMLInputElement;
+  console.log('Disabled input retrieved:', input); // Log the retrieved input element
+
+  // Attempt to type into the disabled input
+  try {
+    await userEvent.type(input, 'Trying to type');
+  } catch (e) {
+    console.log('Cannot type into a disabled input');
+  }
+
+  // Log the disabled state
+  if (input.disabled) {
+    console.log('Input is disabled');
+  }
+};

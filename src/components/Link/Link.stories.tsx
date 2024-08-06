@@ -68,6 +68,12 @@ Hover.args = {
 Hover.parameters = {
   pseudo: { hover: true },
 };
+Hover.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const link = await canvas.getByText('Hover Link');
+  await userEvent.hover(link);
+  console.log('Hovered over the link');
+};
 
 export const Disabled = Template.bind({});
 Disabled.args = {
@@ -77,4 +83,21 @@ Disabled.args = {
   visible: true,
   backgroundColor: 'transparent',
   onClick: action('link-disabled'), // Explicit spy function for onClick
+};
+Disabled.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const link = await canvas.getByText('Disabled Link');
+  console.log('Disabled link retrieved:', link);
+
+  // Attempt to click the disabled link
+  try {
+    await userEvent.click(link);
+  } catch (e) {
+    console.log('Cannot click a disabled link');
+  }
+
+  // Log the disabled state
+  if (link.hasAttribute('disabled')) {
+    console.log('Link is disabled');
+  }
 };
